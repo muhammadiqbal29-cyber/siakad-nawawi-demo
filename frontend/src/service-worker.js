@@ -26,6 +26,7 @@ const PRECACHE = [...CRITICAL_ASSETS, ...CRITICAL_STATIC];
 const ALL_ASSETS = [...build, ...files];
 
 self.addEventListener('install', (event) => {
+	self.skipWaiting();
 	// Cache HANYA file kritis — bukan seluruh aplikasi
 	// Ini membuat instalasi PWA SANGAT CEPAT (< 2 detik)
 	async function addFilesToCache() {

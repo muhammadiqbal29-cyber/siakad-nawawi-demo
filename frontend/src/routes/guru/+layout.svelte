@@ -208,11 +208,22 @@
             if (cachedSekolah) guruState.sekolahList = JSON.parse(cachedSekolah);
             if (cachedAkses) guruState.aksesMap = JSON.parse(cachedAkses);
             
-            // Restore active state
+            // Restore active state or default demo state
             const savedId = localStorage.getItem('siakad_active_sekolah_id');
             if (savedId && guruState.sekolahList.find(s => s.id == savedId)) {
               guruState.activeSekolahId = savedId;
               guruState.activeSekolahName = localStorage.getItem('siakad_active_sekolah_name');
+            } else if (!guruState.sekolahList || guruState.sekolahList.length === 0) {
+              guruState.sekolahList = [
+                { id: 1, nama_sekolah: 'SMP Imam Nawawi', jenjang: 'SMP', status: 'aktif' },
+                { id: 2, nama_sekolah: 'SMA Imam Nawawi', jenjang: 'SMA', status: 'aktif' }
+              ];
+              guruState.activeSekolahId = 1;
+              guruState.activeSekolahName = 'SMP Imam Nawawi';
+              guruState.aksesMap = {
+                '1': ['paket_alquran', 'input_tahfiz', 'input_tahfiz_v2', 'input_tasmi', 'input_tasmi_v2', 'input_diniyah', 'rapor_keseharian', 'presensi', 'cetak_rapor'],
+                '2': ['paket_alquran', 'input_tahfiz', 'input_tahfiz_v2', 'input_tasmi', 'input_tasmi_v2', 'input_diniyah', 'rapor_keseharian', 'presensi', 'cetak_rapor']
+              };
             }
           }
         }

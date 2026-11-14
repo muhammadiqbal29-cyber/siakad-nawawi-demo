@@ -126,7 +126,6 @@ function getGuruProfile(roleOrEmail) {
       })
     };
   }
-  // Guru Lengkap or default
   return {
     id: 4,
     nama_lengkap: 'Ustadz Ahmad Al-Kamil',
@@ -148,8 +147,27 @@ function resolveUserRole(cookies, headers) {
   return 'admin';
 }
 
+function getCorsHeaders(request) {
+  const origin = request.headers.get('origin') || '*';
+  return {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, PATCH',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, X-Sekolah-ID, Accept, Cookie',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Max-Age': '86400'
+  };
+}
+
+export async function OPTIONS({ request }) {
+  return new Response(null, {
+    status: 204,
+    headers: getCorsHeaders(request)
+  });
+}
+
 export async function GET({ params, url, cookies, request }) {
   const p = params.path || '';
+  const cors = getCorsHeaders(request);
 
   // 1. System Status
   if (p === 'system/status') {
@@ -158,7 +176,7 @@ export async function GET({ params, url, cookies, request }) {
       app: 'SIAKAD Nawawi Demo (Vercel Cloud Edition)',
       maintenance_mode: false,
       server_time: new Date().toISOString()
-    });
+    }, { headers: cors });
   }
 
   // 2. Auth Check: /api/me
@@ -170,7 +188,7 @@ export async function GET({ params, url, cookies, request }) {
       email: isGuru ? getGuruProfile(roleKey).email : 'admin@demo.com',
       maintenance_bypass: true,
       message: 'Sesi login demo aktif'
-    });
+    }, { headers: cors });
   }
 
   // 3. Sekolah / Jenjang
@@ -178,18 +196,18 @@ export async function GET({ params, url, cookies, request }) {
     return json({
       status: 'success',
       data: SEKOLAH_LIST
-    });
+    }, { headers: cors });
   }
 
   // 4. Tahun Ajaran
-  if (p === 'tahun-ajaran' || p === 'tahun-ajaran/aktif') {
-    return json(TAHUN_AJARAN_LIST);
+  if (p.includes('tahun-ajaran')) {
+    return json(TAHUN_AJARAN_LIST, { headers: cors });
   }
 
   // 5. Profil Guru
   if (p === 'guru/me/profil') {
     const roleKey = resolveUserRole(cookies, request.headers);
-    return json(getGuruProfile(roleKey));
+    return json(getGuruProfile(roleKey), { headers: cors });
   }
 
   // 6. Kelas
@@ -197,7 +215,7 @@ export async function GET({ params, url, cookies, request }) {
     return json({
       status: 'success',
       data: KELAS_LIST
-    });
+    }, { headers: cors });
   }
 
   // 7. Siswa
@@ -206,7 +224,7 @@ export async function GET({ params, url, cookies, request }) {
       status: 'success',
       data: SISWA_LIST,
       total: SISWA_LIST.length
-    });
+    }, { headers: cors });
   }
 
   // 8. Mapel Diniyah
@@ -214,7 +232,7 @@ export async function GET({ params, url, cookies, request }) {
     return json({
       status: 'success',
       data: MAPEL_LIST
-    });
+    }, { headers: cors });
   }
 
   // 9. Halaqah Tahfiz
@@ -222,7 +240,7 @@ export async function GET({ params, url, cookies, request }) {
     return json({
       status: 'success',
       data: HALAQAH_LIST
-    });
+    }, { headers: cors });
   }
 
   // 10. Indikator Keseharian
@@ -230,7 +248,7 @@ export async function GET({ params, url, cookies, request }) {
     return json({
       status: 'success',
       data: INDIKATOR_LIST
-    });
+    }, { headers: cors });
   }
 
   // 11. Dashboard Guru
@@ -246,7 +264,7 @@ export async function GET({ params, url, cookies, request }) {
         total_setoran: 145,
         rata_rata_nilai: 88.5
       }
-    });
+    }, { headers: cors });
   }
 
   // 12. Daftar Guru
@@ -254,7 +272,7 @@ export async function GET({ params, url, cookies, request }) {
     return json({
       status: 'success',
       data: GURU_LIST
-    });
+    }, { headers: cors });
   }
 
   // Default fallback for any other GET
@@ -262,11 +280,12 @@ export async function GET({ params, url, cookies, request }) {
     status: 'success',
     endpoint: p,
     data: []
-  });
+  }, { headers: cors });
 }
 
 export async function POST({ params, request, cookies }) {
   const p = params.path || '';
+  const cors = getCorsHeaders(request);
 
   // Handle Login
   if (p === 'login') {
@@ -299,13 +318,13 @@ export async function POST({ params, request, cookies }) {
         email: isGuru ? prof.email : 'admin@demo.com',
         role: finalRole
       }
-    });
+    }, { headers: cors });
   }
 
   // Handle Logout
   if (p === 'logout') {
     cookies.delete('token', { path: '/' });
-    return json({ message: 'Logout demo berhasil' });
+    return json({ message: 'Logout demo berhasil' }, { headers: cors });
   }
 
   // Default POST response (simulasi simpan nilai / presensi / edit)
@@ -313,20 +332,22 @@ export async function POST({ params, request, cookies }) {
     status: 'success',
     message: 'Data berhasil disimpan (Mode Demo Vercel)',
     data: {}
-  });
+  }, { headers: cors });
 }
 
-export async function PUT({ params }) {
+export async function PUT({ params, request }) {
+  const cors = getCorsHeaders(request);
   return json({
     status: 'success',
     message: 'Data berhasil diperbarui (Mode Demo Vercel)',
     data: {}
-  });
+  }, { headers: cors });
 }
 
-export async function DELETE({ params }) {
+export async function DELETE({ params, request }) {
+  const cors = getCorsHeaders(request);
   return json({
     status: 'success',
     message: 'Data berhasil dihapus (Mode Demo Vercel)'
-  });
+  }, { headers: cors });
 }
