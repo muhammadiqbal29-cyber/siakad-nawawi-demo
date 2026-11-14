@@ -8,7 +8,7 @@
   import MapelCard from '$lib/components/diniyah/MapelCard.svelte';
   import KonfirmasiMapelModal from '$lib/components/diniyah/KonfirmasiMapelModal.svelte';
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  const apiUrl = (import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' ? '' : 'http://localhost:8080'));
 
   // URL params
   let kelasId = $derived($page.params.id);

@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { auth } from '$lib/auth.svelte.js';
+  import { getApiUrl } from '$lib/config.js';
   import ToastContainer from '$lib/components/ui/ToastContainer.svelte';
   import ConfirmModal from '$lib/components/ui/ConfirmModal.svelte';
   import PwaInstallButton from '$lib/components/ui/PwaInstallButton.svelte';
@@ -12,7 +13,7 @@
   let checkingAuth = $state(true);
 
   onMount(async () => {
-    // --- Global Fetch Interceptor untuk Anti-CSRF ---
+    // --- Global Fetch Interceptor untuk Anti-CSRF & Dynamic URL ---
     const originalFetch = window.fetch;
     window.fetch = async function () {
       let [resource, config] = arguments;
@@ -20,9 +21,19 @@
         config = {};
       }
 
+      // Jika berjalan di domain produksi (seperti Vercel) dan resource memanggil http://localhost:8080, otomatis alihkan ke same-origin relative
+      if (
+        typeof resource === 'string' &&
+        resource.startsWith('http://localhost:8080') &&
+        window.location.hostname !== 'localhost' &&
+        window.location.hostname !== '127.0.0.1'
+      ) {
+        resource = resource.replace('http://localhost:8080', '');
+      }
+
       const method = (config.method || 'GET').toUpperCase();
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
-      const isApiRequest = typeof resource === 'string' && resource.startsWith(apiUrl);
+      const apiUrl = getApiUrl();
+      const isApiRequest = typeof resource === 'string' && (resource.startsWith('/api') || (apiUrl && resource.startsWith(apiUrl)));
 
       if (isApiRequest && ['POST', 'PUT', 'DELETE', 'PATCH'].includes(method)) {
         if (config.headers == null) {
@@ -47,10 +58,11 @@
 
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 5000);
+    const activeApi = getApiUrl();
     try {
       // 1. Cek status maintenance terlebih dahulu (kecuali jika sedang di halaman maintenance)
       if (window.location.pathname !== '/maintenance') {
-        const sysRes = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/system/status`);
+        const sysRes = await fetch(`${activeApi}/api/system/status`);
         if (sysRes.ok) {
           const sysData = await sysRes.json();
           if (sysData.maintenance_mode === true || sysData.maintenance_mode === 'true') {
@@ -66,7 +78,7 @@
       }
 
       // 2. Cek Auth
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/me`, {
+      const res = await fetch(`${activeApi}/api/me`, {
         credentials: 'include',
         signal: ctrl.signal
       });
@@ -84,7 +96,7 @@
           
           // Redirect ke maintenance jika bukan admin/bypass tapi maintenance aktif
           if (data.maintenance_bypass !== true && data.role !== 'admin' && data.role !== 'superadmin' && window.location.pathname !== '/maintenance') {
-            const sysRes = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/system/status`);
+            const sysRes = await fetch(`${activeApi}/api/system/status`);
             if (sysRes.ok) {
               const sysData = await sysRes.json();
               if (sysData.maintenance_mode === true || sysData.maintenance_mode === 'true') {

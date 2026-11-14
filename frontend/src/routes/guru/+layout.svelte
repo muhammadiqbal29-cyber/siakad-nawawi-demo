@@ -3,6 +3,7 @@
   import { page, updated } from '$app/stores';
   import { goto, onNavigate } from '$app/navigation';
   import { auth } from '$lib/auth.svelte.js';
+  import { getApiUrl } from '$lib/config.js';
   import GuruSidebar from '$lib/components/layout/GuruSidebar.svelte';
   import Header from '$lib/components/layout/Header.svelte';
   import BottomNav from '$lib/components/layout/BottomNav.svelte';
@@ -74,7 +75,7 @@
   }
 
   $effect(() => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    const apiUrl = getApiUrl();
 
     if (auth.role === 'admin') {
       // Admin has full access to all features based on the school's features
@@ -286,7 +287,7 @@
   }
 
   function onLogout() {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/logout`, {
+    fetch(`${getApiUrl()}/api/logout`, {
       method: 'POST',
       credentials: 'include'
     }).finally(() => {

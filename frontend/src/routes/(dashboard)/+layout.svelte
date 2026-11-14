@@ -2,6 +2,7 @@
   import { page } from '$app/stores';
   import { goto } from '$app/navigation';
   import { auth } from '$lib/auth.svelte.js';
+  import { getApiUrl } from '$lib/config.js';
   import Sidebar from '$lib/components/layout/Sidebar.svelte';
   import Header from '$lib/components/layout/Header.svelte';
 
@@ -24,7 +25,7 @@
     window.addEventListener('tahunAjaranChanged', handleTAChange);
 
     // Ambil tahun ajaran aktif
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    const apiUrl = getApiUrl();
     fetch(`${apiUrl}/api/tahun-ajaran`, { credentials: 'include' })
       .then((res) => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
       .then((data) => {
@@ -51,7 +52,7 @@
   }
 
   function onLogout() {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/logout`, {
+    fetch(`${getApiUrl()}/api/logout`, {
       method: 'POST',
       credentials: 'include'
     }).finally(() => {

@@ -6,7 +6,7 @@
   import Icon from '$lib/components/ui/Icon.svelte';
   import { guruState } from '$lib/guruState.svelte.js';
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  const apiUrl = (import.meta.env.VITE_API_URL || (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1' ? '' : 'http://localhost:8080'));
   let sekolahId = $derived($page.url.searchParams.get('sekolah_id') || '1');
   let paramTaId = $derived($page.url.searchParams.get('tahun_ajaran_id') || '');
   let paramSemId = $derived($page.url.searchParams.get('semester_id') || '');
