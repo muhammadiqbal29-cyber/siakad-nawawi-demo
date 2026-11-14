@@ -59,6 +59,19 @@ npm run dev
 
 ---
 
+## ⚡ Deployment ke Vercel
+
+Proyek ini telah dikonfigurasi dengan adapter resmi `@sveltejs/adapter-vercel` dan `@sveltejs/adapter-auto` serta `vercel.json`:
+
+1. Buka [Vercel Dashboard](https://vercel.com) dan klik **Add New Project**.
+2. Hubungkan repositori GitHub: `https://github.com/muhammadiqbal29-cyber/siakad-nawawi-demo`.
+3. Vercel akan otomatis mengenali framework **SvelteKit** melalui `vercel.json`.
+4. Di bagian **Environment Variables**, tambahkan:
+   - `VITE_API_URL`: URL Backend API Anda (misal: `https://api.domain-anda.com` atau `http://<ip-server>:8080`).
+5. Klik **Deploy**. SvelteKit akan selesai dibangun dan langsung aktif secara global!
+
+---
+
 ## 📦 Inisialisasi ke Repository GitHub Baru
 
 Untuk mempublikasikan repositori demo ini ke GitHub Anda:

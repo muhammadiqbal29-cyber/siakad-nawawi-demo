@@ -1,0 +1,8 @@
+{
+  "name": "siakad-nawawi-demo",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build && rm -rf ../.vercel && cp -r .vercel ../",
+    "dev": "cd frontend && npm run dev"
+  }
+}
