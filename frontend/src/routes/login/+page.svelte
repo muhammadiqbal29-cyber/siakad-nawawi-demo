@@ -48,6 +48,35 @@
       isLoading = false;
     }
   }
+
+  async function quickLogin(roleOrEmail) {
+    isLoading = true;
+    errorMessage = '';
+
+    try {
+      const payload = roleOrEmail.includes('@') ? { email: roleOrEmail } : { role: roleOrEmail };
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}/api/login`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Gagal login demo');
+      }
+
+      auth.loggedInUser = data.role;
+      auth.role = data.role;
+      goto('/');
+    } catch (error) {
+      errorMessage = error.message || 'Tidak dapat terhubung ke server.';
+    } finally {
+      isLoading = false;
+    }
+  }
 </script>
 
 <div class="app-container">
@@ -78,11 +107,56 @@
 
   <!-- RIGHT/BOTTOM PANEL: Form Section -->
   <div class="form-panel">
-    <h2 class="form-title">Masuk ke akun Anda</h2>
+    <h2 class="form-title">Masuk ke Sistem SIAKAD</h2>
 
     {#if errorMessage}
       <div class="error-alert">{errorMessage}</div>
     {/if}
+
+    <!-- 1-KLIK LOGIN DEMO (TANPA PASSWORD) -->
+    <div class="demo-section">
+      <div class="demo-header">
+        <span class="demo-badge">🚀 Mode Demo</span>
+        <span class="demo-desc">Klik untuk masuk langsung tanpa password:</span>
+      </div>
+      <div class="demo-grid">
+        <button type="button" class="demo-card demo-admin" onclick={() => quickLogin('admin')} disabled={isLoading}>
+          <div class="demo-card-icon">🛡️</div>
+          <div class="demo-card-text">
+            <strong>Admin Utama</strong>
+            <small>Semua Fitur</small>
+          </div>
+        </button>
+
+        <button type="button" class="demo-card demo-tahfiz" onclick={() => quickLogin('guru_tahfiz')} disabled={isLoading}>
+          <div class="demo-card-icon">📖</div>
+          <div class="demo-card-text">
+            <strong>Guru Tahfiz</strong>
+            <small>Ust. Abdullah</small>
+          </div>
+        </button>
+
+        <button type="button" class="demo-card demo-diniyah" onclick={() => quickLogin('guru_diniyah')} disabled={isLoading}>
+          <div class="demo-card-icon">📚</div>
+          <div class="demo-card-text">
+            <strong>Guru Diniyah</strong>
+            <small>Ust. Fauzi</small>
+          </div>
+        </button>
+
+        <button type="button" class="demo-card demo-lengkap" onclick={() => quickLogin('guru_lengkap')} disabled={isLoading}>
+          <div class="demo-card-icon">⭐</div>
+          <div class="demo-card-text">
+            <strong>Guru Lengkap</strong>
+            <small>Multi-Peran</small>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <div class="divider-text">
+      <span>atau login manual</span>
+    </div>
 
     <form
       onsubmit={(e) => {
@@ -98,7 +172,7 @@
             id="email"
             class="form-input"
             bind:value={email}
-            placeholder="Masukkan email Anda"
+            placeholder="contoh: ustadz.tahfiz@demo.com"
             required
             disabled={isLoading}
           />
@@ -106,15 +180,14 @@
       </div>
 
       <div class="form-group">
-        <label class="form-label" for="password">Kata Sandi</label>
+        <label class="form-label" for="password">Kata Sandi (Opsional)</label>
         <div class="input-wrapper">
           <input
             type={showPassword ? 'text' : 'password'}
             id="password"
             class="form-input"
             bind:value={password}
-            placeholder="Masukkan kata sandi (password)"
-            required
+            placeholder="Kosongkan untuk login demo"
             disabled={isLoading}
           />
           <button
@@ -312,8 +385,98 @@
     color: white;
     font-size: 1.5rem;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     text-align: left;
+  }
+
+  /* Demo Login Section */
+  .demo-section {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    padding: 14px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(8px);
+  }
+  .demo-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .demo-badge {
+    background: #ffffff;
+    color: #15803d;
+    font-weight: 800;
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .demo-desc {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.95);
+  }
+  .demo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .demo-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    color: #0f172a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  .demo-card:hover {
+    transform: translateY(-2px);
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .demo-card-icon {
+    font-size: 1.3rem;
+  }
+  .demo-card-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .demo-card-text strong {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.2;
+  }
+  .demo-card-text small {
+    font-size: 0.68rem;
+    color: #64748b;
+    margin-top: 2px;
+  }
+  .divider-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 16px 0 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.72rem;
+  }
+  .divider-text::before,
+  .divider-text::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  }
+  .divider-text span {
+    padding: 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .error-alert {

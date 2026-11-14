@@ -30,9 +30,8 @@ pipeline {
                         cp $SECRET_ENV_FILE backend/.env
                         chmod 644 backend/.env
                         
-                        # 2. Frontend & Mobile: Generate VITE_API_URL secara otomatis (bukan rahasia)
+                        # 2. Frontend: Generate VITE_API_URL secara otomatis (bukan rahasia)
                         echo "VITE_API_URL=https://api.islamimamnawawi.sch.id" > frontend/.env.production
-                        echo "VITE_API_URL=https://api.islamimamnawawi.sch.id" > mobile/.env.production
                     '''
                 }
                 
@@ -40,11 +39,8 @@ pipeline {
                 dir('backend') {
                     sh 'go mod download'
                 }
-                echo 'Mengunduh dependensi Node.js (Frontend & Mobile)...'
+                echo 'Mengunduh dependensi Node.js (Frontend)...'
                 dir('frontend') {
-                    sh 'npm ci'
-                }
-                dir('mobile') {
                     sh 'npm ci'
                 }
             }
@@ -100,13 +96,6 @@ pipeline {
                         }
                     }
                 }
-                stage('Build SPA (Mobile)') {
-                    steps {
-                        dir('mobile') {
-                            sh 'npm run build'
-                        }
-                    }
-                }
             }
         }
 
@@ -128,11 +117,7 @@ pipeline {
                     cp frontend/package.json release_artifact/frontend/
                     cp frontend/package-lock.json release_artifact/frontend/
                     
-                    # 3. Mobile SPA
-                    mkdir -p release_artifact/mobile
-                    cp -r mobile/build release_artifact/mobile/
-                    
-                    # 4. PM2 Config
+                    # 3. PM2 Config
                     cp ecosystem.config.cjs release_artifact/
                 '''
 

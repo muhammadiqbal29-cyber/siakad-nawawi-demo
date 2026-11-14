@@ -21,19 +21,16 @@ PROD_DIR=/var/www/siakad-nawawi-be-fe-terbaru
 # ------------------------------------------
 deploy-staging:
 	@echo "🚀 Memulai Deployment ke Termux (Staging)..."
-	@echo "🎨 Membangun Aplikasi Web & Mobile di Laptop Lokal..."
+	@echo "🎨 Membangun Aplikasi Web di Laptop Lokal..."
 	cd frontend && cp .env.staging .env.production.local && npm install && npm run build
-	cd mobile && cp .env.staging .env.production.local && npm install && npm run build
 	@echo "📥 Menarik kode terbaru di server..."
 	ssh -p $(STAGING_PORT) $(STAGING_USER)@$(STAGING_IP) "cd $(STAGING_DIR) && git fetch origin main && git reset --hard origin/main"
 	@echo "🔐 Mengirim file rahasia dan hasil build ke server..."
 	scp -P $(STAGING_PORT) .env.staging $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/.env.staging
 	scp -P $(STAGING_PORT) frontend/.env.staging $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/frontend/.env.staging
-	scp -P $(STAGING_PORT) mobile/.env.staging $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/mobile/.env.staging
 	scp -P $(STAGING_PORT) backend/oauth_credentials.json $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/backend/oauth_credentials.json
 	scp -P $(STAGING_PORT) backend/token.json $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/backend/token.json
 	scp -r -P $(STAGING_PORT) frontend/build $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/frontend/
-	scp -r -P $(STAGING_PORT) mobile/build $(STAGING_USER)@$(STAGING_IP):$(STAGING_DIR)/mobile/
 	@echo "🚀 Restarting Services..."
 	ssh -p $(STAGING_PORT) $(STAGING_USER)@$(STAGING_IP) "\
 		cd $(STAGING_DIR) && \
@@ -49,19 +46,16 @@ deploy-staging:
 # ------------------------------------------
 deploy-prod:
 	@echo "🚀 Memulai Deployment ke IDCloudHost (Production)..."
-	@echo "🎨 Membangun Aplikasi Web & Mobile di Laptop Lokal..."
+	@echo "🎨 Membangun Aplikasi Web di Laptop Lokal..."
 	cd frontend && cp .env.production .env.production.local && npm install && npm run build
-	cd mobile && cp .env.production .env.production.local && npm install && npm run build
 	@echo "📥 Menarik kode terbaru di server..."
 	ssh -p $(PROD_PORT) $(PROD_USER)@$(PROD_IP) "cd $(PROD_DIR) && git fetch origin main && git reset --hard origin/main"
 	@echo "🔐 Mengirim file rahasia dan hasil build ke server..."
 	scp -P $(PROD_PORT) .env.production $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/.env.production
 	scp -P $(PROD_PORT) frontend/.env.production $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/frontend/.env.production
-	scp -P $(PROD_PORT) mobile/.env.production $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/mobile/.env.production
 	scp -P $(PROD_PORT) backend/oauth_credentials.json $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/backend/oauth_credentials.json
 	scp -P $(PROD_PORT) backend/token.json $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/backend/token.json
 	scp -r -P $(PROD_PORT) frontend/build $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/frontend/
-	scp -r -P $(PROD_PORT) mobile/build $(PROD_USER)@$(PROD_IP):$(PROD_DIR)/mobile/
 	@echo "🚀 Restarting Services..."
 	ssh -p $(PROD_PORT) $(PROD_USER)@$(PROD_IP) "\
 		cd $(PROD_DIR) && \

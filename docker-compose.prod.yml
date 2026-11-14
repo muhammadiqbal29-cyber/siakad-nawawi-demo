@@ -57,15 +57,6 @@ services:
     networks:
       - siakad_net
 
-  mobile:
-    build:
-      context: ./mobile
-      dockerfile: Dockerfile
-    container_name: siakad_mobile_prod
-    restart: unless-stopped
-    networks:
-      - siakad_net
-
   nginx-proxy:
     image: nginx:alpine
     container_name: siakad_nginx_proxy
@@ -76,7 +67,6 @@ services:
     depends_on:
       - backend
       - frontend
-      - mobile
     restart: unless-stopped
     networks:
       - siakad_net

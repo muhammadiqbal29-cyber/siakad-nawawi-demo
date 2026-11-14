@@ -11,17 +11,18 @@ import (
 	"gorm.io/gorm"
 	"siakad-nawawi-be/internal/database"
 	"siakad-nawawi-be/internal/models"
-	"siakad-nawawi-be/internal/utils"
 )
 
 type LoginRequest struct {
-	Email    string `json:"email" validate:"required,email"`
-	Password string `json:"password" validate:"required"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Role     string `json:"role"`
 }
 
 type LoginResponse struct {
 	Role  string `json:"role"`
 	Token string `json:"token"`
+	User  any    `json:"user,omitempty"`
 }
 
 type ErrorResponse struct {
@@ -44,9 +45,25 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err := utils.ValidateStruct(req); err != nil {
+	// Dukungan login cepat via Role (1-Klik Tanpa Password)
+	if req.Email == "" && req.Role != "" {
+		switch req.Role {
+		case "admin":
+			req.Email = "admin@demo.com"
+		case "guru_tahfiz", "tahfiz":
+			req.Email = "ustadz.tahfiz@demo.com"
+		case "guru_diniyah", "diniyah":
+			req.Email = "ustadz.diniyah@demo.com"
+		case "guru_lengkap", "guru":
+			req.Email = "ustadz.lengkap@demo.com"
+		default:
+			req.Email = "admin@demo.com"
+		}
+	}
+
+	if req.Email == "" {
 		w.WriteHeader(http.StatusBadRequest)
-		_ = json.NewEncoder(w).Encode(ErrorResponse{Message: err.Error()})
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Message: "Email wajib diisi"})
 		return
 	}
 
@@ -54,19 +71,37 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	err := database.DB.WithContext(r.Context()).Where("email = ?", req.Email).First(&user).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
+			// Jika email belum ada di database, buat akun demo secara otomatis
+			role := "guru"
+			if req.Email == "admin@demo.com" || req.Role == "admin" {
+				role = "admin"
+			}
+			user = models.User{
+				Email: req.Email,
+				Role:  role,
+			}
+			_ = database.DB.Create(&user)
+		} else {
+			w.WriteHeader(http.StatusInternalServerError)
+			_ = json.NewEncoder(w).Encode(ErrorResponse{Message: "Terjadi kesalahan server"})
+			return
+		}
+	}
+
+	// MODE DEMO: Akses tanpa password!
+	// Jika password diisi selain password demo standar, kita tetap izinkan untuk fleksibilitas demo
+	// (Kecuali jika verifikasi password eksplisit diaktifkan lewat DEMO_REQUIRE_PASSWORD=true)
+	if os.Getenv("DEMO_REQUIRE_PASSWORD") == "true" && req.Password != "" && user.Password != "" {
+		if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(req.Password)); err != nil {
 			w.WriteHeader(http.StatusUnauthorized)
 			_ = json.NewEncoder(w).Encode(ErrorResponse{Message: "Email atau password salah"})
 			return
 		}
-		w.WriteHeader(http.StatusInternalServerError)
-		_ = json.NewEncoder(w).Encode(ErrorResponse{Message: "Terjadi kesalahan server"})
-		return
 	}
 
-	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(req.Password)); err != nil {
-		w.WriteHeader(http.StatusUnauthorized)
-		_ = json.NewEncoder(w).Encode(ErrorResponse{Message: "Email atau password salah"})
-		return
+	jwtSecret := os.Getenv("JWT_SECRET")
+	if jwtSecret == "" {
+		jwtSecret = "siakad-nawawi-secret-demo-key-2026"
 	}
 
 	// Buat JWT Token
@@ -77,7 +112,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		"exp":     time.Now().Add(time.Hour * 24 * 180).Unix(), // 180 hari (1 semester)
 	})
 
-	tokenString, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+	tokenString, err := token.SignedString([]byte(jwtSecret))
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		_ = json.NewEncoder(w).Encode(ErrorResponse{Message: "Gagal membuat token"})
@@ -85,7 +120,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	isProd := os.Getenv("APP_ENV") == "production"
-	// #nosec G124 -- Secure diatur secara dinamis (false untuk dev lokal, true untuk prod)
+	// #nosec G124 -- Secure diatur secara dinamis
 	http.SetCookie(w, &http.Cookie{
 		Name:     "token",
 		Value:    tokenString,
@@ -99,6 +134,11 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewEncoder(w).Encode(LoginResponse{
 		Role:  user.Role,
 		Token: tokenString,
+		User: map[string]any{
+			"id":    user.ID,
+			"email": user.Email,
+			"role":  user.Role,
+		},
 	})
 }
 

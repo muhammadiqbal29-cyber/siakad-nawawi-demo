@@ -5,10 +5,12 @@ import (
 	"log"
 	"log/slog"
 	"os"
+	"strings"
 	"time"
 
 	"siakad-nawawi-be/internal/models"
 
+	"github.com/glebarez/sqlite"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -18,13 +20,16 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
+	driver := strings.ToLower(os.Getenv("DB_DRIVER"))
 	dbUser := os.Getenv("DB_USER")
 	dbPass := os.Getenv("DB_PASS")
 	dbHost := os.Getenv("DB_HOST")
 	dbPort := os.Getenv("DB_PORT")
 	dbName := os.Getenv("DB_NAME")
-
-	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&loc=Local&multiStatements=true", dbUser, dbPass, dbHost, dbPort, dbName)
+	dbPath := os.Getenv("DB_PATH")
+	if dbPath == "" {
+		dbPath = "siakad_demo.db"
+	}
 
 	gormConfig := &gorm.Config{
 		Logger: gormlogger.New(
@@ -39,26 +44,37 @@ func InitDB() {
 	}
 
 	var err error
-	for i := 1; i <= 10; i++ {
-		DB, err = gorm.Open(mysql.Open(dsn), gormConfig)
-		if err == nil {
-			break
+	if driver == "sqlite" || dbHost == "" {
+		slog.Info("Mode Demo: Menggunakan SQLite Database", "path", dbPath)
+		DB, err = gorm.Open(sqlite.Open(dbPath), gormConfig)
+		if err != nil {
+			slog.Error("Gagal membuka database SQLite", "error", err)
+			os.Exit(1)
 		}
-		slog.Warn("Gagal terhubung ke database, mencoba ulang", "percobaan", i, "max", 10, "error", err)
-		time.Sleep(2 * time.Second)
-	}
+	} else {
+		dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?parseTime=true&loc=Local&multiStatements=true", dbUser, dbPass, dbHost, dbPort, dbName)
 
-	if err != nil {
-		slog.Error("Gagal membuka koneksi database setelah 10 percobaan", "error", err)
-		os.Exit(1)
-	}
+		for i := 1; i <= 10; i++ {
+			DB, err = gorm.Open(mysql.Open(dsn), gormConfig)
+			if err == nil {
+				break
+			}
+			slog.Warn("Gagal terhubung ke database MySQL, mencoba ulang", "percobaan", i, "max", 10, "error", err)
+			time.Sleep(2 * time.Second)
+		}
 
-	// Atur Connection Pool agar database tidak hang jika di-bombardir test Playwright
-	sqlDB, err := DB.DB()
-	if err == nil {
-		sqlDB.SetMaxIdleConns(100)
-		sqlDB.SetMaxOpenConns(100)
-		sqlDB.SetConnMaxLifetime(time.Hour)
+		if err != nil {
+			slog.Error("Gagal membuka koneksi database MySQL setelah 10 percobaan", "error", err)
+			os.Exit(1)
+		}
+
+		// Atur Connection Pool agar database tidak hang jika di-bombardir test Playwright
+		sqlDB, err := DB.DB()
+		if err == nil {
+			sqlDB.SetMaxIdleConns(100)
+			sqlDB.SetMaxOpenConns(100)
+			sqlDB.SetConnMaxLifetime(time.Hour)
+		}
 	}
 
 	slog.Info("Berhasil terhubung ke database via GORM")
@@ -181,6 +197,9 @@ func migrateAndSeed() {
 	// Seed master 30 juz Al-Qur'an & default target kelulusan
 	SeedMasterMateriTahfiz30Juz()
 	SeedDefaultKonfigurasiTahfizKelulusan()
+
+	// Seed data demo lengkap
+	SeedDemoData()
 }
 
 func seedUser(email, password, role string) {
@@ -225,6 +244,9 @@ func seedKonfigurasiPresensi() {
 // from int(11) to bigint so they match GORM's default mapping for Go int.
 // This is idempotent and safe to run on every startup.
 func fixForeignKeyMismatch() {
+	if DB == nil || DB.Dialector.Name() != "mysql" {
+		return
+	}
 	// Tables whose primary key (id) may need upgrading from int to bigint
 	pkTables := []string{"users", "gurus"}
 

@@ -13,19 +13,11 @@ echo "✅ Backend build success (backend/server)"
 cd ..
 
 # 2. Build Frontend (SvelteKit)
-echo "[2/3] Building Frontend (SvelteKit)..."
+echo "[2/2] Building Frontend (SvelteKit)..."
 cd frontend
 npm install
 npm run build
 echo "✅ Frontend build success (frontend/build or frontend/dist)"
-cd ..
-
-# 3. Build Mobile (Svelte SPA)
-echo "[3/3] Building Mobile (Svelte SPA)..."
-cd mobile
-npm install
-npm run build
-echo "✅ Mobile build success (mobile/dist)"
 cd ..
 
 echo "==========================================="
