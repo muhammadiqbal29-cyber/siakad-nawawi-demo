@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lembar Penilaian Tahfiz & Tasmi' - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .nav-item.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none min-h-screen sticky top-0">
+    <div>
+      <div class="p-5 border-b border-slate-200 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
+          IN
+        </div>
+        <div>
+          <div class="font-extrabold text-sm text-slate-900 leading-tight">SIAKAD NAWAWI</div>
+          <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Standalone Demo PC</div>
+        </div>
+      </div>
+
+      <nav class="p-3 space-y-1 text-xs">
+        <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Menu Utama</div>
+        <a href="dashboard.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>📊</span>
+          <span>Beranda Dashboard</span>
+        </a>
+        <a href="input_nilai_hub.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>⚙️</span>
+          <span>Pusat Penilaian (Hub)</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Modul Penilaian</div>
+        <a href="input_nilai_tahfiz.html" class="nav-item active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors">
+          <span>📖</span>
+          <span>Tahfiz & Tasmi'</span>
+        </a>
+        <a href="input_nilai_diniyah.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📚</span>
+          <span>Mata Pelajaran Diniyah</span>
+        </a>
+        <a href="input_nilai_keseharian.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>🌟</span>
+          <span>Keseharian & Karakter</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Laporan & Master</div>
+        <a href="cetak_rapor.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📄</span>
+          <span>Cetak Rapor Santri</span>
+        </a>
+        <a href="presensi.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>⏱️</span>
+          <span>Presensi & Absensi</span>
+        </a>
+        <a href="master_santri.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>👥</span>
+          <span>Master Data Santri</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center border border-emerald-300">
+            UA
+          </div>
+          <div>
+            <div class="font-bold text-xs text-slate-900 leading-tight">Ust. Abdullah</div>
+            <div class="text-[10px] text-slate-500">Guru Tahfiz</div>
+          </div>
+        </div>
+        <a href="login.html" title="Keluar / Ganti Akun" class="text-slate-400 hover:text-red-600 p-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3 text-xs">
+        <a href="input_nilai_hub.html" class="text-slate-400 hover:text-slate-600">Pusat Penilaian</a>
+        <span class="text-slate-300">/</span>
+        <span class="font-bold text-slate-800">Lembar Penilaian Tahfiz Al-Qur'an</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="quickFillAll(90)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-300 transition-colors">
+          ⚡ Set Mumtaz (90) Semua
+        </button>
+        <button onclick="saveChanges()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-sm transition-colors flex items-center gap-1.5">
+          <span>💾 Simpan Lembar Nilai</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="p-8 max-w-7xl w-full mx-auto space-y-6">
+      
+      <!-- FILTER & CLASS HEADER -->
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold">
+            📖
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-lg font-extrabold text-slate-900" id="label-kelas-header">SMP Imam Nawawi - Kelas 7A</h1>
+              <span class="text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded">Rombel A (Putra)</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Target Hafalan: <b class="text-slate-700">Juz 30 (Juz 'Amma)</b> • Penguji: <b>Ust. Abdullah Al-Hafiz</b>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 mb-1">Pilih Kelas</label>
+            <select onchange="changeKelas(this.value)" class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-emerald-500">
+              <option value="Kelas 7A">Kelas 7A (SMP)</option>
+              <option value="Kelas 7B">Kelas 7B (SMP)</option>
+              <option value="Kelas 8A">Kelas 8A (SMP)</option>
+              <option value="Kelas 10A">Kelas 10A (SMA)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 mb-1">Target Juz</label>
+            <select class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-emerald-500">
+              <option>Juz 30 (Juz 'Amma)</option>
+              <option>Juz 29 (Tabarak)</option>
+              <option>Juz 28 (Qad Sami'a)</option>
+              <option>Tasmi' 1-5 Juz</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREADSHEET TABLE CARD -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        
+        <div class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+          <div class="text-xs font-bold text-slate-700">
+            Daftar Santri (<span id="total-santri-badge">5 Santri</span>)
+          </div>
+          <div class="text-[11px] text-slate-500">
+            * Nilai dihitung otomatis dari rata-rata: Kelancaran, Tajwid, dan Makharijul Huruf
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left">
+            <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4 w-12 text-center">No</th>
+                <th class="py-3 px-4 w-56">Nama Santri</th>
+                <th class="py-3 px-4 w-32">NISN</th>
+                <th class="py-3 px-4 w-44">Surah Diuji</th>
+                <th class="py-3 px-3 w-28 text-center">Kelancaran (0-100)</th>
+                <th class="py-3 px-3 w-28 text-center">Tajwid (0-100)</th>
+                <th class="py-3 px-3 w-28 text-center">Makharij (0-100)</th>
+                <th class="py-3 px-3 w-24 text-center">Nilai Akhir</th>
+                <th class="py-3 px-3 w-28 text-center">Predikat</th>
+                <th class="py-3 px-4">Catatan Evaluasi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200" id="tahfiz-tbody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-emerald-800 text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center gap-2 transform translate-y-16 opacity-0 transition-all duration-200 z-50">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span id="toast-text">Data penilaian berhasil disimpan!</span>
+  </div>
+
+  <script>
+    const santriList = [
+      { id: 1, nama: 'Ahmad Zaky Al-Faruq', nisn: '0081234561', surah: 'An-Naba s.d An-Nas', kelancaran: 92, tajwid: 90, makharij: 94, catatan: 'Sangat mutqin, makhraj fasih' },
+      { id: 2, nama: 'Muhammad Farhan Pratama', nisn: '0081234562', surah: 'An-Nazi\'at s.d Al-Infitar', kelancaran: 85, tajwid: 84, makharij: 86, catatan: 'Perhatikan dengung ghunnah' },
+      { id: 3, nama: 'Abdullah Azzam Robbani', nisn: '0081234563', surah: 'At-Takwir s.d Al-Balad', kelancaran: 78, tajwid: 80, makharij: 76, catatan: 'Perlu pengulangan tajwid mad' },
+      { id: 4, nama: 'Fathir Rizky Ramadhan', nisn: '0081234564', surah: 'Asy-Syams s.d Al-Alaq', kelancaran: 88, tajwid: 85, makharij: 90, catatan: 'Lancar dan suara tartil' },
+      { id: 5, nama: 'Hamzah Al-Ghifari', nisn: '0081234565', surah: 'Al-Qadr s.d An-Nas', kelancaran: 95, tajwid: 95, makharij: 96, catatan: 'Mumtaz, siap lanjut Juz 29' }
+    ];
+
+    function renderTable() {
+      const tbody = document.getElementById('tahfiz-tbody');
+      tbody.innerHTML = '';
+      santriList.forEach((s, idx) => {
+        const finalScore = Math.round((s.kelancaran + s.tajwid + s.makharij) / 3);
+        const predikat = getPredikat(finalScore);
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-4 text-center font-bold text-slate-500">${idx + 1}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${s.nama}</td>
+          <td class="py-3 px-4 font-mono text-slate-500">${s.nisn}</td>
+          <td class="py-3 px-4">
+            <input type="text" value="${s.surah}" class="w-full text-xs px-2 py-1 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-none focus:border-emerald-500" />
+          </td>
+          <td class="py-3 px-3 text-center">
+            <input type="number" min="0" max="100" value="${s.kelancaran}" oninput="updateRow(${idx}, 'kelancaran', this.value)" class="w-16 text-center text-xs font-bold px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none" />
+          </td>
+          <td class="py-3 px-3 text-center">
+            <input type="number" min="0" max="100" value="${s.tajwid}" oninput="updateRow(${idx}, 'tajwid', this.value)" class="w-16 text-center text-xs font-bold px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none" />
+          </td>
+          <td class="py-3 px-3 text-center">
+            <input type="number" min="0" max="100" value="${s.makharij}" oninput="updateRow(${idx}, 'makharij', this.value)" class="w-16 text-center text-xs font-bold px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none" />
+          </td>
+          <td class="py-3 px-3 text-center font-extrabold text-sm text-emerald-700" id="score-${idx}">
+            ${finalScore}
+          </td>
+          <td class="py-3 px-3 text-center" id="pred-${idx}">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold ${predikat.class}">${predikat.label}</span>
+          </td>
+          <td class="py-3 px-4">
+            <input type="text" value="${s.catatan}" class="w-full text-xs px-2 py-1 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-none focus:border-emerald-500" />
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function getPredikat(score) {
+      if (score >= 90) return { label: 'Mumtaz (A)', class: 'bg-emerald-100 text-emerald-800' };
+      if (score >= 80) return { label: 'Jayyid Jiddan (B)', class: 'bg-blue-100 text-blue-800' };
+      if (score >= 70) return { label: 'Jayyid (C)', class: 'bg-amber-100 text-amber-800' };
+      return { label: 'Maqbul (D)', class: 'bg-red-100 text-red-800' };
+    }
+
+    function updateRow(idx, field, val) {
+      santriList[idx][field] = Number(val) || 0;
+      const s = santriList[idx];
+      const finalScore = Math.round((s.kelancaran + s.tajwid + s.makharij) / 3);
+      const predikat = getPredikat(finalScore);
+      document.getElementById(`score-${idx}`).innerText = finalScore;
+      document.getElementById(`pred-${idx}`).innerHTML = `<span class="px-2 py-0.5 rounded text-[11px] font-bold ${predikat.class}">${predikat.label}</span>`;
+    }
+
+    function quickFillAll(score) {
+      santriList.forEach(s => {
+        s.kelancaran = score;
+        s.tajwid = score;
+        s.makharij = score;
+      });
+      renderTable();
+      showToast('Seluruh santri diset nilai ' + score);
+    }
+
+    function saveChanges() {
+      showToast('Alhamdulillah! Nilai Tahfiz berhasil disimpan ke server.');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      t.classList.remove('translate-y-16', 'opacity-0');
+      setTimeout(() => {
+        t.classList.add('translate-y-16', 'opacity-0');
+      }, 2500);
+    }
+
+    function changeKelas(nama) {
+      document.getElementById('label-kelas-header').innerText = nama;
+      showToast('Memuat data untuk ' + nama);
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>

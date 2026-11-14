@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presensi & Kehadiran - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .nav-item.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none min-h-screen sticky top-0">
+    <div>
+      <div class="p-5 border-b border-slate-200 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
+          IN
+        </div>
+        <div>
+          <div class="font-extrabold text-sm text-slate-900 leading-tight">SIAKAD NAWAWI</div>
+          <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Standalone Demo PC</div>
+        </div>
+      </div>
+
+      <nav class="p-3 space-y-1 text-xs">
+        <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Menu Utama</div>
+        <a href="dashboard.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>📊</span>
+          <span>Beranda Dashboard</span>
+        </a>
+        <a href="input_nilai_hub.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>⚙️</span>
+          <span>Pusat Penilaian (Hub)</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Modul Penilaian</div>
+        <a href="input_nilai_tahfiz.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📖</span>
+          <span>Tahfiz & Tasmi'</span>
+        </a>
+        <a href="input_nilai_diniyah.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📚</span>
+          <span>Mata Pelajaran Diniyah</span>
+        </a>
+        <a href="input_nilai_keseharian.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>🌟</span>
+          <span>Keseharian & Karakter</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Laporan & Master</div>
+        <a href="cetak_rapor.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📄</span>
+          <span>Cetak Rapor Santri</span>
+        </a>
+        <a href="presensi.html" class="nav-item active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors">
+          <span>⏱️</span>
+          <span>Presensi & Absensi</span>
+        </a>
+        <a href="master_santri.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>👥</span>
+          <span>Master Data Santri</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center border border-emerald-300">
+            UA
+          </div>
+          <div>
+            <div class="font-bold text-xs text-slate-900 leading-tight">Ust. Abdullah</div>
+            <div class="text-[10px] text-slate-500">Guru Tahfiz</div>
+          </div>
+        </div>
+        <a href="login.html" title="Keluar / Ganti Akun" class="text-slate-400 hover:text-red-600 p-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3 text-xs">
+        <a href="dashboard.html" class="text-slate-400 hover:text-slate-600">Beranda</a>
+        <span class="text-slate-300">/</span>
+        <span class="font-bold text-slate-800">Manajemen Presensi & Kehadiran</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-xs bg-emerald-50 text-emerald-700 font-bold px-3 py-1 rounded-md border border-emerald-200">
+          ● Geofencing Kampus Terverifikasi
+        </span>
+      </div>
+    </header>
+
+    <div class="p-8 max-w-7xl w-full mx-auto space-y-6">
+      
+      <!-- PRESENSI CARD -->
+      <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div>
+          <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Absensi Guru Hari Ini</span>
+          <h1 class="text-xl font-black text-slate-900 mt-2">Sabtu, 14 November 2026</h1>
+          <p class="text-xs text-slate-500 mt-1">Status Kehadiran Anda: <b class="text-emerald-700">Tercatat Masuk (07:12 WIB)</b></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="alert('Absensi masuk sudah tercatat sebelumnya pada 07:12 WIB')" class="px-5 py-2.5 bg-emerald-100 text-emerald-800 font-bold text-xs rounded-lg border border-emerald-300">
+            ✓ Hadir Masuk (07:12)
+          </button>
+          <button onclick="alert('Berhasil melakukan Presensi Pulang!')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-md">
+            Presensi Pulang (Sore) →
+          </button>
+        </div>
+      </div>
+
+      <!-- REKAP PRESENSI SANTRI TABLE -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between text-xs">
+          <span class="font-bold text-slate-700">Rekapitulasi Kehadiran Santri Kelas 7A (Bulan November 2026)</span>
+          <button onclick="alert('Laporan presensi diexport ke Excel')" class="text-emerald-700 font-bold">Export Excel</button>
+        </div>
+
+        <table class="w-full text-xs text-left">
+          <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+            <tr>
+              <th class="py-3 px-4 w-12 text-center">No</th>
+              <th class="py-3 px-4">Nama Santri</th>
+              <th class="py-3 px-4 text-center">Hadir</th>
+              <th class="py-3 px-4 text-center">Izin</th>
+              <th class="py-3 px-4 text-center">Sakit</th>
+              <th class="py-3 px-4 text-center">Alpa</th>
+              <th class="py-3 px-4 text-center">Persentase</th>
+              <th class="py-3 px-4 text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200">
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 px-4 text-center font-bold text-slate-500">1</td>
+              <td class="py-3 px-4 font-bold text-slate-900">Ahmad Zaky Al-Faruq</td>
+              <td class="py-3 px-4 text-center font-bold text-emerald-700">24 Hari</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center font-extrabold text-emerald-700">100%</td>
+              <td class="py-3 px-4 text-center"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]">Sangat Rajin</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 px-4 text-center font-bold text-slate-500">2</td>
+              <td class="py-3 px-4 font-bold text-slate-900">Muhammad Farhan Pratama</td>
+              <td class="py-3 px-4 text-center font-bold text-emerald-700">23 Hari</td>
+              <td class="py-3 px-4 text-center text-amber-700 font-bold">1 Hari</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center font-extrabold text-emerald-700">95.8%</td>
+              <td class="py-3 px-4 text-center"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]">Baik</span></td>
+            </tr>
+            <tr class="hover:bg-slate-50">
+              <td class="py-3 px-4 text-center font-bold text-slate-500">3</td>
+              <td class="py-3 px-4 font-bold text-slate-900">Abdullah Azzam Robbani</td>
+              <td class="py-3 px-4 text-center font-bold text-emerald-700">22 Hari</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center text-blue-700 font-bold">2 Hari</td>
+              <td class="py-3 px-4 text-center text-slate-500">0</td>
+              <td class="py-3 px-4 text-center font-extrabold text-emerald-700">91.6%</td>
+              <td class="py-3 px-4 text-center"><span class="px-2 py-0.5 bg-blue-100 text-blue-800 rounded font-bold text-[10px]">Sakit (Izin)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

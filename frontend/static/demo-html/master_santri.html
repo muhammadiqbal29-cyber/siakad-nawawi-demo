@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Master Data Santri - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .nav-item.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none min-h-screen sticky top-0">
+    <div>
+      <div class="p-5 border-b border-slate-200 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
+          IN
+        </div>
+        <div>
+          <div class="font-extrabold text-sm text-slate-900 leading-tight">SIAKAD NAWAWI</div>
+          <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Standalone Demo PC</div>
+        </div>
+      </div>
+
+      <nav class="p-3 space-y-1 text-xs">
+        <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Menu Utama</div>
+        <a href="dashboard.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>📊</span>
+          <span>Beranda Dashboard</span>
+        </a>
+        <a href="input_nilai_hub.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>⚙️</span>
+          <span>Pusat Penilaian (Hub)</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Modul Penilaian</div>
+        <a href="input_nilai_tahfiz.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📖</span>
+          <span>Tahfiz & Tasmi'</span>
+        </a>
+        <a href="input_nilai_diniyah.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📚</span>
+          <span>Mata Pelajaran Diniyah</span>
+        </a>
+        <a href="input_nilai_keseharian.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>🌟</span>
+          <span>Keseharian & Karakter</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Laporan & Master</div>
+        <a href="cetak_rapor.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📄</span>
+          <span>Cetak Rapor Santri</span>
+        </a>
+        <a href="presensi.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>⏱️</span>
+          <span>Presensi & Absensi</span>
+        </a>
+        <a href="master_santri.html" class="nav-item active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors">
+          <span>👥</span>
+          <span>Master Data Santri</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center border border-emerald-300">
+            AD
+          </div>
+          <div>
+            <div class="font-bold text-xs text-slate-900 leading-tight">Admin Akademik</div>
+            <div class="text-[10px] text-slate-500">Administrator TU</div>
+          </div>
+        </div>
+        <a href="login.html" title="Keluar / Ganti Akun" class="text-slate-400 hover:text-red-600 p-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3 text-xs">
+        <a href="dashboard.html" class="text-slate-400 hover:text-slate-600">Beranda</a>
+        <span class="text-slate-300">/</span>
+        <span class="font-bold text-slate-800">Direktori Master Data Santri</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="alert('Formulir tambah santri baru dibuka')" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-sm">
+          + Tambah Santri Baru
+        </button>
+      </div>
+    </header>
+
+    <div class="p-8 max-w-7xl w-full mx-auto space-y-6">
+      
+      <!-- FILTER & SEARCH BAR -->
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <input type="text" id="search-input" oninput="filterData(this.value)" placeholder="Cari nama santri atau NISN..." class="w-80 px-3 py-2 text-xs border border-slate-300 rounded-lg focus:outline-none focus:border-emerald-500" />
+          
+          <select id="filter-jenjang" onchange="filterJenjang(this.value)" class="text-xs px-3 py-2 border border-slate-300 rounded-lg bg-slate-50 font-bold">
+            <option value="all">Semua Jenjang (SMP & SMA)</option>
+            <option value="SMP">SMP Imam Nawawi</option>
+            <option value="SMA">SMA Imam Nawawi</option>
+          </select>
+        </div>
+
+        <div class="text-xs text-slate-500 font-bold">
+          Menampilkan <span id="count-santri" class="text-emerald-700">10 Santri</span> Demo
+        </div>
+      </div>
+
+      <!-- SANTRI TABLE -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <table class="w-full text-xs text-left">
+          <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+            <tr>
+              <th class="py-3 px-4 w-12 text-center">No</th>
+              <th class="py-3 px-4">Nama Lengkap Santri</th>
+              <th class="py-3 px-4">NISN</th>
+              <th class="py-3 px-4">NIS</th>
+              <th class="py-3 px-4">Jenjang & Kelas</th>
+              <th class="py-3 px-4">Halaqah Pengampu</th>
+              <th class="py-3 px-4 text-center">Status</th>
+              <th class="py-3 px-4 text-right">Aksi</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-200" id="santri-tbody">
+            <!-- Dynamically populated rows -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    const dataSantri = [
+      { id: 1, nama: 'Ahmad Zaky Al-Faruq', nisn: '0081234561', nis: '2627001', jenjang: 'SMP', kelas: 'Kelas 7A', halaqah: 'Abu Bakar Ash-Shiddiq', status: 'Aktif' },
+      { id: 2, nama: 'Muhammad Farhan Pratama', nisn: '0081234562', nis: '2627002', jenjang: 'SMP', kelas: 'Kelas 7A', halaqah: 'Abu Bakar Ash-Shiddiq', status: 'Aktif' },
+      { id: 3, nama: 'Abdullah Azzam Robbani', nisn: '0081234563', nis: '2627003', jenjang: 'SMP', kelas: 'Kelas 7A', halaqah: 'Abu Bakar Ash-Shiddiq', status: 'Aktif' },
+      { id: 4, nama: 'Fathir Rizky Ramadhan', nisn: '0081234564', nis: '2627004', jenjang: 'SMP', kelas: 'Kelas 7A', halaqah: 'Umar bin Khattab', status: 'Aktif' },
+      { id: 5, nama: 'Hamzah Al-Ghifari', nisn: '0081234565', nis: '2627005', jenjang: 'SMP', kelas: 'Kelas 7A', halaqah: 'Umar bin Khattab', status: 'Aktif' },
+      { id: 6, nama: 'Bilal Muhammad Yusuf', nisn: '0071234561', nis: '2627101', jenjang: 'SMA', kelas: 'Kelas 10A', halaqah: 'Utsman bin Affan', status: 'Aktif' },
+      { id: 7, nama: 'Salman Al-Farisi', nisn: '0071234562', nis: '2627102', jenjang: 'SMA', kelas: 'Kelas 10A', halaqah: 'Utsman bin Affan', status: 'Aktif' },
+      { id: 8, nama: 'Thoriq Ziyad As-Syahid', nisn: '0071234563', nis: '2627103', jenjang: 'SMA', kelas: 'Kelas 10A', halaqah: 'Ali bin Abi Thalib', status: 'Aktif' },
+      { id: 9, nama: 'Usamah Zaid Ibrahim', nisn: '0071234564', nis: '2627104', jenjang: 'SMA', kelas: 'Kelas 10A', halaqah: 'Ali bin Abi Thalib', status: 'Aktif' },
+      { id: 10, nama: 'Khalid Walid Rabbani', nisn: '0071234565', nis: '2627105', jenjang: 'SMA', kelas: 'Kelas 10A', halaqah: 'Ali bin Abi Thalib', status: 'Aktif' }
+    ];
+
+    let currentList = [...dataSantri];
+
+    function renderSantriTable(list) {
+      const tbody = document.getElementById('santri-tbody');
+      tbody.innerHTML = '';
+      document.getElementById('count-santri').innerText = list.length + ' Santri';
+
+      list.forEach((s, idx) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-4 text-center font-bold text-slate-500">${idx + 1}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${s.nama}</td>
+          <td class="py-3 px-4 font-mono text-slate-500">${s.nisn}</td>
+          <td class="py-3 px-4 font-mono text-slate-500">${s.nis}</td>
+          <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">${s.jenjang} - ${s.kelas}</span></td>
+          <td class="py-3 px-4 text-slate-700">${s.halaqah}</td>
+          <td class="py-3 px-4 text-center"><span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded font-bold text-[10px]">${s.status}</span></td>
+          <td class="py-3 px-4 text-right">
+            <a href="cetak_rapor.html" class="text-emerald-700 font-bold hover:underline mr-3">Rapor →</a>
+            <button onclick="alert('Buka form edit ' + '${s.nama}')" class="text-slate-500 hover:text-slate-800">Edit</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterData(query) {
+      const q = query.trim().toLowerCase();
+      const filtered = dataSantri.filter(s => s.nama.toLowerCase().includes(q) || s.nisn.includes(q));
+      renderSantriTable(filtered);
+    }
+
+    function filterJenjang(jenjang) {
+      if (jenjang === 'all') {
+        renderSantriTable(dataSantri);
+      } else {
+        const filtered = dataSantri.filter(s => s.jenjang === jenjang);
+        renderSantriTable(filtered);
+      }
+    }
+
+    renderSantriTable(dataSantri);
+  </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Demo HTML - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .feature-card {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.15);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen p-8">
+
+  <div class="max-w-6xl mx-auto space-y-8">
+    
+    <!-- HEADER -->
+    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-full mb-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Folder Demo HTML Standalone • Offline Ready</span>
+        </div>
+        <h1 class="text-2xl font-black text-slate-900 tracking-tight">Katalog Fitur SIAKAD Nawawi (Versi HTML Murni)</h1>
+        <p class="text-xs text-slate-500 mt-1 max-w-2xl leading-relaxed">
+          Semua fitur aplikasi telah dibuat dalam bentuk berkas HTML murni tanpa ketergantungan server atau build framework. Dapat dibuka langsung di browser offline kapan saja.
+        </p>
+      </div>
+
+      <div class="text-right">
+        <span class="text-xs font-bold text-slate-400 block">Lokasi Berkas:</span>
+        <code class="text-xs font-mono bg-slate-100 text-slate-800 px-3 py-1.5 rounded-lg border border-slate-300 font-bold">
+          /projek/rea/demo-html/
+        </code>
+      </div>
+    </div>
+
+    <!-- GRID KATALOG SEMUA FITUR -->
+    <div class="grid grid-cols-3 gap-5">
+      
+      <!-- FITUR 1: LOGIN -->
+      <a href="login.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            🔐
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">login.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">1. Halaman Login (1-Klik Demo)</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Akses instan tanpa password untuk 4 peran: Admin, Guru Tahfiz, Guru Diniyah, dan Guru Lengkap.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Login</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 2: DASHBOARD -->
+      <a href="dashboard.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            📊
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">dashboard.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">2. Beranda Dashboard PC</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Ringkasan eksekutif santri (320), rombel (12), ketuntasan hafalan, dan shortcut aksi cepat.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Dashboard</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 3: PUSAT PENILAIAN (IDCLOUHOST STYLE) -->
+      <a href="input_nilai_hub.html" class="feature-card bg-white p-5 rounded-xl border-2 border-emerald-500 shadow-md group block relative overflow-hidden">
+        <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[9px] font-black uppercase px-2 py-0.5 rounded-bl">
+          IDCloudHost Style
+        </div>
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-lg font-bold shadow-sm">
+            ⚙️
+          </span>
+          <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-mono border border-emerald-200">input_nilai_hub.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-emerald-800">3. Pusat Penilaian (Configurator)</h3>
+        <p class="text-xs text-slate-600 mt-1 font-medium">
+          Konfigurator kartu bertingkat: Kategori*, Jenjang*, Kelas*, Materi*, dan Metode Input dengan Order Bar.
+        </p>
+        <div class="mt-4 text-xs font-black text-emerald-700 flex items-center gap-1">
+          <span>Buka Konfigurator Nilai</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 4: TAHFIZ -->
+      <a href="input_nilai_tahfiz.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            📖
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">input_nilai_tahfiz.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">4. Penilaian Tahfiz & Tasmi'</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Tabel setoran juz, ujian kelancaran, tajwid, makharij, auto-predikat (Mumtaz/Jayyid), dan tombol Set KKM.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Lembar Tahfiz</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 5: DINIYAH -->
+      <a href="input_nilai_diniyah.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            📚
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">input_nilai_diniyah.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">5. Penilaian Mapel Diniyah</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Spreadsheet UH 1-3, PTS (30%), PAS (40%), kalkulasi nilai akhir instan, dan export template Excel.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Lembar Diniyah</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 6: KESEHARIAN -->
+      <a href="input_nilai_keseharian.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            🌟
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">input_nilai_keseharian.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">6. Jurnal Keseharian & Karakter</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Presensi sholat berjamaah 5 waktu di masjid, adab asrama, buku saku sanksi, dan pemutihan iqob.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Jurnal Karakter</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 7: CETAK RAPOR -->
+      <a href="cetak_rapor.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            📄
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">cetak_rapor.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">7. Lembar Cetak Rapor Santri</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Format standar resmi Yayasan Imam Nawawi: Kop surat, nilai tahfiz, diniyah, adab, dan tanda tangan.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Pratinjau Rapor</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 8: PRESENSI -->
+      <a href="presensi.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            ⏱️
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">presensi.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">8. Presensi & Absensi</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Presensi guru jam masuk/pulang geofencing dan rekapitulasi kehadiran santri bulanan.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Presensi</span> <span>→</span>
+        </div>
+      </a>
+
+      <!-- FITUR 9: MASTER DATA SANTRI -->
+      <a href="master_santri.html" class="feature-card bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm group block">
+        <div class="flex items-center justify-between mb-3">
+          <span class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-bold group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+            👥
+          </span>
+          <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded font-mono">master_santri.html</span>
+        </div>
+        <h3 class="font-extrabold text-sm text-slate-900 group-hover:text-emerald-700">9. Master Data Santri</h3>
+        <p class="text-xs text-slate-500 mt-1">
+          Direktori data santri lengkap dengan filter jenjang SMP/SMA, NISN, rombel, dan pencarian instan.
+        </p>
+        <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+          <span>Buka Master Santri</span> <span>→</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- FOOTER INFO -->
+    <div class="text-center py-6 border-t border-slate-200 text-xs text-slate-400">
+      SIAKAD Nawawi Demo HTML Edition • Yayasan Imam Nawawi Palangka Raya 2026/2027
+    </div>
+
+  </div>
+
+</body>
+</html>

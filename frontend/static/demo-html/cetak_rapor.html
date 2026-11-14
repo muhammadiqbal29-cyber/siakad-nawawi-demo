@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cetak Rapor Santri - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-arabic { font-family: 'Amiri', serif; }
+    @media print {
+      body { background: white !important; padding: 0 !important; }
+      .no-print { display: none !important; }
+      .rapor-sheet { box-shadow: none !important; border: none !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-100 min-h-screen py-8 px-4 flex flex-col items-center">
+
+  <!-- TOP ACTION BAR (NO PRINT) -->
+  <div class="max-w-4xl w-full mb-6 flex items-center justify-between no-print bg-white p-4 rounded-xl shadow-sm border border-slate-200">
+    <div class="flex items-center gap-3">
+      <a href="dashboard.html" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg transition-colors">
+        ← Kembali ke Dashboard
+      </a>
+      <span class="text-xs text-slate-500 font-medium">Pratinjau Rapor Resmi Santri</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <select class="text-xs font-bold px-3 py-1.5 border border-slate-300 rounded-lg bg-slate-50">
+        <option>Ahmad Zaky Al-Faruq (0081234561)</option>
+        <option>Muhammad Farhan Pratama (0081234562)</option>
+        <option>Abdullah Azzam Robbani (0081234563)</option>
+      </select>
+      <button onclick="window.print()" class="px-5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-sm flex items-center gap-2">
+        <span>🖨️ Cetak / Simpan PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- BUKU RAPOR SHEET (A4 STANDAR CETAK) -->
+  <div class="rapor-sheet max-w-4xl w-full bg-white p-12 rounded-xl shadow-md border border-slate-200 text-slate-900 text-xs">
+    
+    <!-- KOP SURAT RESMI -->
+    <div class="text-center pb-4 border-b-2 border-slate-900 mb-6 relative">
+      <div class="font-arabic text-xl font-bold text-slate-800 mb-1">بسم الله الرحمن الرحيم</div>
+      <div class="text-base font-extrabold uppercase tracking-wide">YAYASAN IMAM NAWAWI PALANGKA RAYA</div>
+      <div class="text-lg font-black tracking-wider text-emerald-800">SMP - SMA ISLAM TERPADU IMAM NAWAWI</div>
+      <div class="text-[11px] text-slate-600 mt-1">
+        NPSN: 69991234 / 69995678 • Alamat: Jl. G. Obos No. 10–12, Kota Palangka Raya, Kalimantan Tengah
+      </div>
+      <div class="text-[10px] text-slate-500">Website: www.siakad-nawawi.sch.id • Email: info@siakad-nawawi.sch.id</div>
+    </div>
+
+    <!-- TITLE -->
+    <div class="text-center mb-6">
+      <h2 class="text-sm font-black uppercase tracking-wider text-slate-900 underline">LAPORAN HASIL PENILAIAN SANTRI (RAPOR)</h2>
+      <div class="text-[11px] font-bold text-slate-600 mt-0.5">SEMESTER GANJIL TAHUN AJARAN 2026/2027</div>
+    </div>
+
+    <!-- BIODATA SANTRI TABLE -->
+    <div class="grid grid-cols-2 gap-4 mb-6 bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs">
+      <div>
+        <table class="w-full">
+          <tr><td class="w-28 py-0.5 text-slate-500 font-semibold">Nama Santri</td><td class="font-bold">: Ahmad Zaky Al-Faruq</td></tr>
+          <tr><td class="py-0.5 text-slate-500 font-semibold">Nomor Induk / NISN</td><td class="font-bold">: 2627001 / 0081234561</td></tr>
+          <tr><td class="py-0.5 text-slate-500 font-semibold">Jenjang Sekolah</td><td class="font-bold">: SMP Imam Nawawi</td></tr>
+        </table>
+      </div>
+      <div>
+        <table class="w-full">
+          <tr><td class="w-28 py-0.5 text-slate-500 font-semibold">Kelas / Rombel</td><td class="font-bold">: Kelas 7A (Rombel Putra)</td></tr>
+          <tr><td class="py-0.5 text-slate-500 font-semibold">Wali Kelas</td><td class="font-bold">: Ust. Abdullah Al-Hafiz</td></tr>
+          <tr><td class="py-0.5 text-slate-500 font-semibold">Halaqah Tahfiz</td><td class="font-bold">: Abu Bakar Ash-Shiddiq</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- BAGIAN A: TAHFIZ AL-QUR'AN -->
+    <div class="mb-6">
+      <div class="font-extrabold text-xs text-slate-900 uppercase tracking-wide mb-2 flex items-center justify-between">
+        <span>A. PENILAIAN TAHFIZ AL-QUR'AN & TASMI'</span>
+        <span class="text-[11px] text-emerald-700 font-bold lowercase">target minimal: juz 30 mutqin</span>
+      </div>
+      <table class="w-full border-collapse border border-slate-400 text-center text-xs">
+        <thead class="bg-slate-100 font-bold">
+          <tr>
+            <th class="border border-slate-400 py-2 px-2 w-10">No</th>
+            <th class="border border-slate-400 py-2 px-4 text-left">Materi Ujian Hafalan</th>
+            <th class="border border-slate-400 py-2 px-3 w-24">Kelancaran</th>
+            <th class="border border-slate-400 py-2 px-3 w-24">Tajwid</th>
+            <th class="border border-slate-400 py-2 px-3 w-24">Makharij</th>
+            <th class="border border-slate-400 py-2 px-3 w-24">Nilai Akhir</th>
+            <th class="border border-slate-400 py-2 px-3 w-32">Predikat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-400 py-1.5">1</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Ujian Hafalan Juz 30 (An-Naba s.d An-Nas)</td>
+            <td class="border border-slate-400 py-1.5">92</td>
+            <td class="border border-slate-400 py-1.5">90</td>
+            <td class="border border-slate-400 py-1.5">94</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-emerald-800">92</td>
+            <td class="border border-slate-400 py-1.5 font-bold">Mumtaz (A)</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-400 py-1.5">2</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Ujian Tasmi' Sekali Duduk 1 Juz</td>
+            <td class="border border-slate-400 py-1.5">95</td>
+            <td class="border border-slate-400 py-1.5">92</td>
+            <td class="border border-slate-400 py-1.5">95</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-emerald-800">94</td>
+            <td class="border border-slate-400 py-1.5 font-bold">Mumtaz (A)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BAGIAN B: AKADEMIK DINIYAH -->
+    <div class="mb-6">
+      <div class="font-extrabold text-xs text-slate-900 uppercase tracking-wide mb-2">
+        B. PENILAIAN MATA PELAJARAN DINIYAH (KITAB)
+      </div>
+      <table class="w-full border-collapse border border-slate-400 text-center text-xs">
+        <thead class="bg-slate-100 font-bold">
+          <tr>
+            <th class="border border-slate-400 py-2 px-2 w-10">No</th>
+            <th class="border border-slate-400 py-2 px-4 text-left">Mata Pelajaran</th>
+            <th class="border border-slate-400 py-2 px-3 w-16">KKM</th>
+            <th class="border border-slate-400 py-2 px-3 w-20">Nilai Akhir</th>
+            <th class="border border-slate-400 py-2 px-3 w-28">Predikat</th>
+            <th class="border border-slate-400 py-2 px-4 text-left">Deskripsi Kemampuan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="border border-slate-400 py-1.5">1</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Fiqih Ibadah</td>
+            <td class="border border-slate-400 py-1.5">75</td>
+            <td class="border border-slate-400 py-1.5 font-bold">90</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-emerald-800">Mumtaz (A)</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left">Sangat menguasai syarat sholat dan thaharah dengan dalil</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-400 py-1.5">2</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Aqidah & Akhlak</td>
+            <td class="border border-slate-400 py-1.5">75</td>
+            <td class="border border-slate-400 py-1.5 font-bold">88</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-blue-800">Jayyid Jiddan (B)</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left">Memahami tauhid rububiyyah dan uluhiyyah secara baik</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-400 py-1.5">3</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Hadits Arbain</td>
+            <td class="border border-slate-400 py-1.5">75</td>
+            <td class="border border-slate-400 py-1.5 font-bold">85</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-blue-800">Jayyid Jiddan (B)</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left">Hafal hadits 1 s.d 20 beserta rawinya dengan lancar</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-400 py-1.5">4</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Bahasa Arab</td>
+            <td class="border border-slate-400 py-1.5">70</td>
+            <td class="border border-slate-400 py-1.5 font-bold">86</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-blue-800">Jayyid Jiddan (B)</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left">Fasih melafalkan mufrodat Durusul Lughah jilid 1</td>
+          </tr>
+          <tr>
+            <td class="border border-slate-400 py-1.5">5</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left font-semibold">Sirah Nabawiyah</td>
+            <td class="border border-slate-400 py-1.5">75</td>
+            <td class="border border-slate-400 py-1.5 font-bold">88</td>
+            <td class="border border-slate-400 py-1.5 font-bold text-blue-800">Jayyid Jiddan (B)</td>
+            <td class="border border-slate-400 py-1.5 px-3 text-left">Mengetahui fase dakwah Makkah dan Madinah dengan runtut</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BAGIAN C: KESEHARIAN & ADAB ASRAMA -->
+    <div class="mb-8">
+      <div class="font-extrabold text-xs text-slate-900 uppercase tracking-wide mb-2">
+        C. PERILAKU, KESEHARIAN & KEDISIPLINAN ASRAMA
+      </div>
+      <div class="grid grid-cols-2 gap-4 border border-slate-400 p-4 rounded bg-slate-50/50">
+        <div>
+          <div class="font-bold mb-1 text-slate-700">1. Kedisiplinan Ibadah</div>
+          <div class="text-[11px] text-slate-600">Sholat Berjamaah 5 Waktu: <b class="text-emerald-800">A (Sangat Rajin, Tepat Waktu)</b></div>
+          <div class="text-[11px] text-slate-600">Dzikir Pagi & Petang: <b class="text-emerald-800">A (Rutin Menjaga Wirid)</b></div>
+        </div>
+        <div>
+          <div class="font-bold mb-1 text-slate-700">2. Adab & Ketertiban</div>
+          <div class="text-[11px] text-slate-600">Adab Bergaul & Berbicara: <b class="text-emerald-800">A (Santun dan Hormat)</b></div>
+          <div class="text-[11px] text-slate-600">Catatan Pelanggaran: <b class="text-emerald-800">Nihil / 0 Poin Sanksi</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TANDA TANGAN -->
+    <div class="grid grid-cols-3 text-center pt-4 border-t border-slate-200">
+      <div>
+        <div class="text-slate-500 mb-16">Orang Tua / Wali Santri,</div>
+        <div class="font-bold underline text-slate-800">( ......................................... )</div>
+      </div>
+      <div>
+        <div class="text-slate-500 mb-16">Wali Kelas 7A,</div>
+        <div class="font-bold underline text-slate-800">Ust. Abdullah Al-Hafiz</div>
+        <div class="text-[10px] text-slate-500">NIP. 198503152010011002</div>
+      </div>
+      <div>
+        <div class="text-slate-500 mb-1">Palangka Raya, 14 November 2026</div>
+        <div class="text-slate-500 mb-12">Kepala Sekolah,</div>
+        <div class="font-bold underline text-slate-800">Ust. Ahmad Al-Kamil, M.Pd.</div>
+        <div class="text-[10px] text-slate-500">NIP. 198605102011011004</div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jurnal Keseharian & Karakter - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .nav-item.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none min-h-screen sticky top-0">
+    <div>
+      <div class="p-5 border-b border-slate-200 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
+          IN
+        </div>
+        <div>
+          <div class="font-extrabold text-sm text-slate-900 leading-tight">SIAKAD NAWAWI</div>
+          <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Standalone Demo PC</div>
+        </div>
+      </div>
+
+      <nav class="p-3 space-y-1 text-xs">
+        <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Menu Utama</div>
+        <a href="dashboard.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>📊</span>
+          <span>Beranda Dashboard</span>
+        </a>
+        <a href="input_nilai_hub.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>⚙️</span>
+          <span>Pusat Penilaian (Hub)</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Modul Penilaian</div>
+        <a href="input_nilai_tahfiz.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📖</span>
+          <span>Tahfiz & Tasmi'</span>
+        </a>
+        <a href="input_nilai_diniyah.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📚</span>
+          <span>Mata Pelajaran Diniyah</span>
+        </a>
+        <a href="input_nilai_keseharian.html" class="nav-item active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors">
+          <span>🌟</span>
+          <span>Keseharian & Karakter</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Laporan & Master</div>
+        <a href="cetak_rapor.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📄</span>
+          <span>Cetak Rapor Santri</span>
+        </a>
+        <a href="presensi.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>⏱️</span>
+          <span>Presensi & Absensi</span>
+        </a>
+        <a href="master_santri.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>👥</span>
+          <span>Master Data Santri</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center border border-emerald-300">
+            MA
+          </div>
+          <div>
+            <div class="font-bold text-xs text-slate-900 leading-tight">Musyrif Asrama</div>
+            <div class="text-[10px] text-slate-500">Karakter & Kedisiplinan</div>
+          </div>
+        </div>
+        <a href="login.html" title="Keluar / Ganti Akun" class="text-slate-400 hover:text-red-600 p-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3 text-xs">
+        <a href="input_nilai_hub.html" class="text-slate-400 hover:text-slate-600">Pusat Penilaian</a>
+        <span class="text-slate-300">/</span>
+        <span class="font-bold text-slate-800">Jurnal Keseharian & Karakter Santri</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="saveKeseharian()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-sm transition-colors flex items-center gap-1.5">
+          <span>💾 Simpan Jurnal Keseharian</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="p-8 max-w-7xl w-full mx-auto space-y-6">
+      
+      <!-- SUBNAV TABS -->
+      <div class="flex border-b border-slate-200 gap-4 text-xs font-bold">
+        <button onclick="switchTab('sholat')" id="tab-sholat" class="pb-3 border-b-2 border-emerald-600 text-emerald-700 flex items-center gap-2">
+          <span>🕌 Sholat Berjamaah 5 Waktu</span>
+          <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-full text-[10px]">Hari Ini</span>
+        </button>
+        <button onclick="switchTab('adab')" id="tab-adab" class="pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2">
+          <span>🤝 Adab & Akhlak Harian</span>
+        </button>
+        <button onclick="switchTab('pelanggaran')" id="tab-pelanggaran" class="pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2">
+          <span>⚠️ Catatan Disiplin & Pemutihan Iqob</span>
+        </button>
+      </div>
+
+      <!-- VIEW 1: SHOLAT BERJAMAAH -->
+      <div id="view-sholat" class="space-y-4">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-700">Presensi Sholat Fardhu di Masjid (Sabtu, 14 Nov 2026)</span>
+            <span class="text-slate-500">Klik tombol status untuk mengubah</span>
+          </div>
+
+          <table class="w-full text-xs text-left">
+            <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4 w-12 text-center">No</th>
+                <th class="py-3 px-4 w-60">Nama Santri</th>
+                <th class="py-3 px-4 text-center">Subuh</th>
+                <th class="py-3 px-4 text-center">Dzuhur</th>
+                <th class="py-3 px-4 text-center">Ashar</th>
+                <th class="py-3 px-4 text-center">Maghrib</th>
+                <th class="py-3 px-4 text-center">Isya</th>
+                <th class="py-3 px-4 text-center">Poin Kedisiplinan</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 px-4 text-center font-bold text-slate-500">1</td>
+                <td class="py-3 px-4 font-bold text-slate-900">Ahmad Zaky Al-Faruq</td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center font-black text-emerald-700">100 / 100</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 px-4 text-center font-bold text-slate-500">2</td>
+                <td class="py-3 px-4 font-bold text-slate-900">Muhammad Farhan Pratama</td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-amber-100 text-amber-800 rounded font-bold">◐ Masbuq</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center font-black text-emerald-700">95 / 100</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 px-4 text-center font-bold text-slate-500">3</td>
+                <td class="py-3 px-4 font-bold text-slate-900">Abdullah Azzam Robbani</td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center font-black text-emerald-700">100 / 100</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 px-4 text-center font-bold text-slate-500">4</td>
+                <td class="py-3 px-4 font-bold text-slate-900">Fathir Rizky Ramadhan</td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center font-black text-emerald-700">100 / 100</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="py-3 px-4 text-center font-bold text-slate-500">5</td>
+                <td class="py-3 px-4 font-bold text-slate-900">Hamzah Al-Ghifari</td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center"><span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded font-bold">✓ Jamaah</span></td>
+                <td class="py-3 px-4 text-center font-black text-emerald-700">100 / 100</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VIEW 2: CATATAN DISIPLIN & PEMUTIHAN IQOB -->
+      <div id="view-pelanggaran" class="hidden space-y-4">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h2 class="text-base font-extrabold text-slate-900">Catatan Pelanggaran & Pemutihan Iqob Edukatif</h2>
+              <p class="text-xs text-slate-500">Santri yang melanggar dapat memutihkan poin dengan tugas hafalan atau khidmah.</p>
+            </div>
+            <button onclick="alert('Formulir tambah pelanggaran santri dibuka')" class="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg shadow-sm">
+              + Catat Pelanggaran Baru
+            </button>
+          </div>
+
+          <table class="w-full text-xs text-left">
+            <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-4">Santri</th>
+                <th class="py-3 px-4">Jenis Pelanggaran</th>
+                <th class="py-3 px-4 text-center">Poin Sanksi</th>
+                <th class="py-3 px-4">Tugas Pemutihan (Iqob)</th>
+                <th class="py-3 px-4 text-center">Status Pemutihan</th>
+                <th class="py-3 px-4 text-right">Aksi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="py-3 px-4 font-bold text-slate-900">Muhammad Farhan Pratama</td>
+                <td class="py-3 px-4 text-slate-600">Terlambat bangun sholat Subuh berjamaah</td>
+                <td class="py-3 px-4 text-center text-red-600 font-bold">-5 Poin</td>
+                <td class="py-3 px-4">Menghafal Surah Al-Waqi'ah ayat 1-30</td>
+                <td class="py-3 px-4 text-center">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">Sedang Dikerjakan</span>
+                </td>
+                <td class="py-3 px-4 text-right">
+                  <button onclick="alert('Poin Farhan berhasil diputihkan setelah setoran')" class="text-xs font-bold text-emerald-600 hover:text-emerald-700">Verifikasi Tuntas ✓</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function switchTab(tab) {
+      document.getElementById('tab-sholat').className = 'pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2';
+      document.getElementById('tab-adab').className = 'pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2';
+      document.getElementById('tab-pelanggaran').className = 'pb-3 border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2';
+      
+      document.getElementById('view-sholat').classList.add('hidden');
+      document.getElementById('view-pelanggaran').classList.add('hidden');
+
+      if (tab === 'sholat') {
+        document.getElementById('tab-sholat').className = 'pb-3 border-b-2 border-emerald-600 text-emerald-700 flex items-center gap-2 font-bold';
+        document.getElementById('view-sholat').classList.remove('hidden');
+      } else if (tab === 'pelanggaran') {
+        document.getElementById('tab-pelanggaran').className = 'pb-3 border-b-2 border-emerald-600 text-emerald-700 flex items-center gap-2 font-bold';
+        document.getElementById('view-pelanggaran').classList.remove('hidden');
+      } else {
+        document.getElementById('tab-adab').className = 'pb-3 border-b-2 border-emerald-600 text-emerald-700 flex items-center gap-2 font-bold';
+        document.getElementById('view-sholat').classList.remove('hidden');
+      }
+    }
+
+    function saveKeseharian() {
+      alert('Alhamdulillah! Jurnal keseharian & sholat santri berhasil disimpan.');
+    }
+  </script>
+</body>
+</html>

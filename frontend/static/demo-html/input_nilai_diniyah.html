@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lembar Penilaian Mapel Diniyah - SIAKAD Nawawi</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .nav-item.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none min-h-screen sticky top-0">
+    <div>
+      <div class="p-5 border-b border-slate-200 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
+          IN
+        </div>
+        <div>
+          <div class="font-extrabold text-sm text-slate-900 leading-tight">SIAKAD NAWAWI</div>
+          <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Standalone Demo PC</div>
+        </div>
+      </div>
+
+      <nav class="p-3 space-y-1 text-xs">
+        <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Menu Utama</div>
+        <a href="dashboard.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>📊</span>
+          <span>Beranda Dashboard</span>
+        </a>
+        <a href="input_nilai_hub.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>⚙️</span>
+          <span>Pusat Penilaian (Hub)</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Modul Penilaian</div>
+        <a href="input_nilai_tahfiz.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📖</span>
+          <span>Tahfiz & Tasmi'</span>
+        </a>
+        <a href="input_nilai_diniyah.html" class="nav-item active flex items-center gap-3 px-3 py-2 rounded-lg transition-colors">
+          <span>📚</span>
+          <span>Mata Pelajaran Diniyah</span>
+        </a>
+        <a href="input_nilai_keseharian.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>🌟</span>
+          <span>Keseharian & Karakter</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Laporan & Master</div>
+        <a href="cetak_rapor.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📄</span>
+          <span>Cetak Rapor Santri</span>
+        </a>
+        <a href="presensi.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>⏱️</span>
+          <span>Presensi & Absensi</span>
+        </a>
+        <a href="master_santri.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>👥</span>
+          <span>Master Data Santri</span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center border border-emerald-300">
+            UF
+          </div>
+          <div>
+            <div class="font-bold text-xs text-slate-900 leading-tight">Ust. Fauzi, Lc.</div>
+            <div class="text-[10px] text-slate-500">Guru Mapel Diniyah</div>
+          </div>
+        </div>
+        <a href="login.html" title="Keluar / Ganti Akun" class="text-slate-400 hover:text-red-600 p-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 flex flex-col min-w-0">
+    <header class="h-14 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3 text-xs">
+        <a href="input_nilai_hub.html" class="text-slate-400 hover:text-slate-600">Pusat Penilaian</a>
+        <span class="text-slate-300">/</span>
+        <span class="font-bold text-slate-800">Lembar Penilaian Akademik Diniyah (Kitab)</span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button onclick="quickFillDiniyah(85)" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-lg border border-slate-300 transition-colors">
+          ⚡ Set Nilai 85 Semua
+        </button>
+        <button onclick="alert('Template Excel berhasil diunduh')" class="px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold rounded-lg border border-emerald-300 transition-colors flex items-center gap-1.5">
+          <span>📥 Unduh Excel</span>
+        </button>
+        <button onclick="saveChangesDiniyah()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-lg shadow-sm transition-colors flex items-center gap-1.5">
+          <span>💾 Simpan Nilai Diniyah</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- CONTENT BODY -->
+    <div class="p-8 max-w-7xl w-full mx-auto space-y-6">
+      
+      <!-- CLASS & MAPEL HEADER -->
+      <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-xl font-bold">
+            📚
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-lg font-extrabold text-slate-900" id="label-mapel-header">Fiqih Ibadah - Kelas 7A</h1>
+              <span class="text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded">KKM: 75</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-0.5">
+              Kitab: <b class="text-slate-700">Matan Al-Ghayah wat Taqrib</b> • Pengampu: <b>Ust. Fauzi, Lc.</b>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 text-xs">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 mb-1">Pilih Mata Pelajaran</label>
+            <select onchange="changeMapel(this.value)" class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-emerald-500">
+              <option value="Fiqih Ibadah">Fiqih Ibadah (KKM 75)</option>
+              <option value="Aqidah & Akhlak">Aqidah & Akhlak (KKM 75)</option>
+              <option value="Hadits Arbain">Hadits Arbain (KKM 75)</option>
+              <option value="Bahasa Arab">Bahasa Arab (KKM 70)</option>
+              <option value="Sirah Nabawiyah">Sirah Nabawiyah (KKM 75)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-slate-500 mb-1">Pilih Kelas</label>
+            <select class="bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 font-bold text-slate-700 focus:outline-none focus:border-emerald-500">
+              <option>Kelas 7A (SMP)</option>
+              <option>Kelas 7B (SMP)</option>
+              <option>Kelas 10A (SMA)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPREADSHEET TABLE CARD -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        
+        <div class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+          <div class="text-xs font-bold text-slate-700">
+            Lembar Penilaian Siswa Kelas 7A (Bobot: UH 30% • PTS 30% • PAS 40%)
+          </div>
+          <div class="text-[11px] text-slate-500">
+            * Perubahan nilai langsung dikalkulasi realtime
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs text-left">
+            <thead class="bg-slate-100 text-slate-600 font-bold uppercase text-[10px] tracking-wider border-b border-slate-200">
+              <tr>
+                <th class="py-3 px-3 w-10 text-center">No</th>
+                <th class="py-3 px-4 w-52">Nama Santri</th>
+                <th class="py-3 px-3 w-28">NISN</th>
+                <th class="py-3 px-2 w-16 text-center">UH 1</th>
+                <th class="py-3 px-2 w-16 text-center">UH 2</th>
+                <th class="py-3 px-2 w-16 text-center">UH 3</th>
+                <th class="py-3 px-2 w-20 text-center bg-slate-200/50">Rata UH</th>
+                <th class="py-3 px-2 w-16 text-center">PTS</th>
+                <th class="py-3 px-2 w-16 text-center">PAS</th>
+                <th class="py-3 px-3 w-24 text-center bg-emerald-50 text-emerald-800">Nilai Akhir</th>
+                <th class="py-3 px-3 w-28 text-center">Predikat</th>
+                <th class="py-3 px-4">Deskripsi Kemampuan</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200" id="diniyah-tbody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 bg-emerald-800 text-white px-5 py-3 rounded-xl shadow-2xl text-xs font-bold flex items-center gap-2 transform translate-y-16 opacity-0 transition-all duration-200 z-50">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span id="toast-text">Data penilaian berhasil disimpan!</span>
+  </div>
+
+  <script>
+    const santriDiniyah = [
+      { id: 1, nama: 'Ahmad Zaky Al-Faruq', nisn: '0081234561', uh1: 88, uh2: 90, uh3: 92, pts: 86, pas: 90, catatan: 'Sangat menguasai bab Thaharah dan rukun shalat' },
+      { id: 2, nama: 'Muhammad Farhan Pratama', nisn: '0081234562', uh1: 75, uh2: 80, uh3: 78, pts: 76, pas: 82, catatan: 'Memahami konsep dasar ibadah harian dengan baik' },
+      { id: 3, nama: 'Abdullah Azzam Robbani', nisn: '0081234563', uh1: 72, uh2: 74, uh3: 70, pts: 72, pas: 75, catatan: 'Perlu penguatan pada syarat sah dan pembatal wudhu' },
+      { id: 4, nama: 'Fathir Rizky Ramadhan', nisn: '0081234564', uh1: 82, uh2: 84, uh3: 86, pts: 80, pas: 85, catatan: 'Aktif bertanya dan hafalan matan fiqih lancar' },
+      { id: 5, nama: 'Hamzah Al-Ghifari', nisn: '0081234565', uh1: 94, uh2: 96, uh3: 95, pts: 92, pas: 95, catatan: 'Mumtaz, pemahaman dalil sangat baik' }
+    ];
+
+    function calculateFinal(s) {
+      const rataUH = Math.round((s.uh1 + s.uh2 + s.uh3) / 3);
+      const finalScore = Math.round((rataUH * 0.3) + (s.pts * 0.3) + (s.pas * 0.4));
+      return { rataUH, finalScore };
+    }
+
+    function renderDiniyahTable() {
+      const tbody = document.getElementById('diniyah-tbody');
+      tbody.innerHTML = '';
+      santriDiniyah.forEach((s, idx) => {
+        const { rataUH, finalScore } = calculateFinal(s);
+        const predikat = getPredikatDiniyah(finalScore);
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50 transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-3 text-center font-bold text-slate-500">${idx + 1}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${s.nama}</td>
+          <td class="py-3 px-3 font-mono text-slate-500">${s.nisn}</td>
+          <td class="py-3 px-1 text-center">
+            <input type="number" min="0" max="100" value="${s.uh1}" oninput="updateDiniyah(${idx}, 'uh1', this.value)" class="w-12 text-center text-xs px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none" />
+          </td>
+          <td class="py-3 px-1 text-center">
+            <input type="number" min="0" max="100" value="${s.uh2}" oninput="updateDiniyah(${idx}, 'uh2', this.value)" class="w-12 text-center text-xs px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none" />
+          </td>
+          <td class="py-3 px-1 text-center">
+            <input type="number" min="0" max="100" value="${s.uh3}" oninput="updateDiniyah(${idx}, 'uh3', this.value)" class="w-12 text-center text-xs px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none" />
+          </td>
+          <td class="py-3 px-2 text-center font-bold text-slate-700 bg-slate-100" id="rata-${idx}">
+            ${rataUH}
+          </td>
+          <td class="py-3 px-1 text-center">
+            <input type="number" min="0" max="100" value="${s.pts}" oninput="updateDiniyah(${idx}, 'pts', this.value)" class="w-12 text-center text-xs px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none font-bold" />
+          </td>
+          <td class="py-3 px-1 text-center">
+            <input type="number" min="0" max="100" value="${s.pas}" oninput="updateDiniyah(${idx}, 'pas', this.value)" class="w-12 text-center text-xs px-1 py-1 border border-slate-300 rounded focus:border-emerald-500 focus:outline-none font-bold" />
+          </td>
+          <td class="py-3 px-3 text-center font-black text-sm text-emerald-700 bg-emerald-50" id="final-${idx}">
+            ${finalScore}
+          </td>
+          <td class="py-3 px-3 text-center" id="pred-${idx}">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold ${predikat.class}">${predikat.label}</span>
+          </td>
+          <td class="py-3 px-4">
+            <input type="text" value="${s.catatan}" class="w-full text-xs px-2 py-1 bg-slate-50 border border-slate-300 rounded focus:bg-white focus:outline-none focus:border-emerald-500" />
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function getPredikatDiniyah(score) {
+      if (score >= 90) return { label: 'A (Mumtaz)', class: 'bg-emerald-100 text-emerald-800' };
+      if (score >= 80) return { label: 'B (Jayyid Jiddan)', class: 'bg-blue-100 text-blue-800' };
+      if (score >= 75) return { label: 'C (Jayyid)', class: 'bg-amber-100 text-amber-800' };
+      return { label: 'D (Perlu Bimbingan)', class: 'bg-red-100 text-red-800' };
+    }
+
+    function updateDiniyah(idx, field, val) {
+      santriDiniyah[idx][field] = Number(val) || 0;
+      const { rataUH, finalScore } = calculateFinal(santriDiniyah[idx]);
+      const predikat = getPredikatDiniyah(finalScore);
+      document.getElementById(`rata-${idx}`).innerText = rataUH;
+      document.getElementById(`final-${idx}`).innerText = finalScore;
+      document.getElementById(`pred-${idx}`).innerHTML = `<span class="px-2 py-0.5 rounded text-[11px] font-bold ${predikat.class}">${predikat.label}</span>`;
+    }
+
+    function quickFillDiniyah(score) {
+      santriDiniyah.forEach(s => {
+        s.uh1 = score;
+        s.uh2 = score;
+        s.uh3 = score;
+        s.pts = score;
+        s.pas = score;
+      });
+      renderDiniyahTable();
+      showToast('Seluruh nilai santri diset rata-rata ' + score);
+    }
+
+    function changeMapel(val) {
+      document.getElementById('label-mapel-header').innerText = val + ' - Kelas 7A';
+      showToast('Memuat lembar nilai ' + val);
+    }
+
+    function saveChangesDiniyah() {
+      showToast('Alhamdulillah! Nilai Diniyah berhasil disimpan dan disinkronkan ke rapor.');
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toast-text').innerText = msg;
+      t.classList.remove('translate-y-16', 'opacity-0');
+      setTimeout(() => {
+        t.classList.add('translate-y-16', 'opacity-0');
+      }, 2500);
+    }
+
+    renderDiniyahTable();
+  </script>
+</body>
+</html>

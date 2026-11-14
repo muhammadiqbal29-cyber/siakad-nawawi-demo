@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SIAKAD Nawawi Demo</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .demo-card {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .demo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex items-center justify-center p-6">
+  
+  <div class="max-w-4xl w-full bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden grid grid-cols-1 md:grid-cols-12">
+    
+    <!-- LEFT PANEL: BRANDING -->
+    <div class="md:col-span-5 bg-gradient-to-br from-emerald-600 to-emerald-800 text-white p-8 flex flex-col justify-between">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-xs font-semibold text-emerald-100 mb-6 border border-white/20">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Edisi Demo Standalone HTML</span>
+        </div>
+        <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-emerald-700 font-extrabold text-2xl shadow-lg mb-4">
+          IN
+        </div>
+        <h1 class="text-2xl font-black tracking-tight leading-tight">YAYASAN IMAM NAWAWI</h1>
+        <p class="text-emerald-100 text-xs mt-2 leading-relaxed">
+          Sistem Informasi Akademik, Penilaian Tahfiz Al-Qur'an, Diniyah, dan Karakter Santri Palangka Raya.
+        </p>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/20 text-[11px] text-emerald-200">
+        <div>Platform: Standalone HTML (Zero Config)</div>
+        <div class="mt-1">Dapat dibuka offline langsung di browser manapun.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: LOGIN & 1-CLICK DEMO CARDS -->
+    <div class="md:col-span-7 p-8 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-extrabold text-slate-800">Masuk ke Sistem SIAKAD</h2>
+          <span class="text-xs bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-md font-bold border border-emerald-200">1-Klik Akses</span>
+        </div>
+        <p class="text-xs text-slate-500 mb-6">
+          Klik salah satu profil demo di bawah ini untuk langsung masuk tanpa perlu memasukkan kata sandi:
+        </p>
+
+        <!-- 1-CLICK DEMO WORKSPACE CARDS -->
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          
+          <a href="dashboard.html?role=admin" class="demo-card p-3.5 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 flex flex-col justify-between group">
+            <div class="flex items-center justify-between mb-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">👑</span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Admin</span>
+            </div>
+            <div>
+              <div class="font-bold text-xs text-slate-800 group-hover:text-emerald-700">Administrator Utama</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Semua Fitur & Data Master</div>
+            </div>
+          </a>
+
+          <a href="input_nilai_hub.html?role=guru_tahfiz" class="demo-card p-3.5 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 flex flex-col justify-between group">
+            <div class="flex items-center justify-between mb-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">📖</span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Tahfiz</span>
+            </div>
+            <div>
+              <div class="font-bold text-xs text-slate-800 group-hover:text-emerald-700">Ust. Abdullah Al-Hafiz</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Spesialis Tahfiz & Tasmi'</div>
+            </div>
+          </a>
+
+          <a href="input_nilai_hub.html?role=guru_diniyah" class="demo-card p-3.5 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 flex flex-col justify-between group">
+            <div class="flex items-center justify-between mb-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">📚</span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Diniyah</span>
+            </div>
+            <div>
+              <div class="font-bold text-xs text-slate-800 group-hover:text-emerald-700">Ust. Fauzi, Lc.</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Guru Kitab & Ulangan</div>
+            </div>
+          </a>
+
+          <a href="input_nilai_hub.html?role=guru_lengkap" class="demo-card p-3.5 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 flex flex-col justify-between group">
+            <div class="flex items-center justify-between mb-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-colors">⭐</span>
+              <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Multi-Peran</span>
+            </div>
+            <div>
+              <div class="font-bold text-xs text-slate-800 group-hover:text-emerald-700">Ust. Ahmad Al-Kamil</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Tahfiz, Diniyah, Karakter</div>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- MANUAL FORM (FALLBACK) -->
+        <div class="pt-4 border-t border-slate-100">
+          <label class="block text-xs font-bold text-slate-700 mb-1">Alamat Email</label>
+          <input type="text" value="ustadz.tahfiz@demo.com" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg mb-3 focus:outline-none focus:border-emerald-500" placeholder="admin@demo.com">
+          
+          <label class="block text-xs font-bold text-slate-700 mb-1">Kata Sandi (Opsional di Demo)</label>
+          <input type="password" value="demo1234" class="w-full text-xs px-3 py-2 border border-slate-300 rounded-lg mb-4 focus:outline-none focus:border-emerald-500" placeholder="••••••••">
+
+          <a href="dashboard.html" class="block w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs text-center rounded-lg shadow-md transition-all">
+            Masuk ke Aplikasi →
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center text-[11px] text-slate-400">
+        Demo HTML Standalone • SIAKAD Nawawi 2026/2027
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

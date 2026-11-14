@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda Dashboard - SIAKAD Nawawi Demo</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    * { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+    .nav-item.active {
+      background-color: #10b981;
+      color: #ffffff;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 select-none min-h-screen sticky top-0">
+    <div>
+      <!-- Workspace Brand -->
+      <div class="p-5 border-b border-slate-200 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-extrabold text-base shadow-sm">
+          IN
+        </div>
+        <div>
+          <div class="font-extrabold text-sm text-slate-900 leading-tight">SIAKAD NAWAWI</div>
+          <div class="text-[10px] text-emerald-600 font-bold mt-0.5">Standalone Demo PC</div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="p-3 space-y-1 text-xs">
+        <div class="px-3 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Menu Utama</div>
+        
+        <a href="dashboard.html" class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors">
+          <span>📊</span>
+          <span>Beranda Dashboard</span>
+        </a>
+
+        <a href="input_nilai_hub.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors font-medium">
+          <span>⚙️</span>
+          <span>Pusat Penilaian (Hub)</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Modul Penilaian</div>
+
+        <a href="input_nilai_tahfiz.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📖</span>
+          <span>Tahfiz & Tasmi'</span>
+        </a>
+
+        <a href="input_nilai_diniyah.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📚</span>
+          <span>Mata Pelajaran Diniyah</span>
+        </a>
+
+        <a href="input_nilai_keseharian.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>🌟</span>
+          <span>Keseharian & Karakter</span>
+        </a>
+
+        <div class="px-3 pt-4 pb-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Laporan & Master</div>
+
+        <a href="cetak_rapor.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>📄</span>
+          <span>Cetak Rapor Santri</span>
+        </a>
+
+        <a href="presensi.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>⏱️</span>
+          <span>Presensi & Absensi</span>
+        </a>
+
+        <a href="master_santri.html" class="nav-item text-slate-600 hover:bg-slate-100 flex items-center gap-3 px-3 py-2 rounded-lg transition-colors font-medium">
+          <span>👥</span>
+          <span>Master Data Santri</span>
+        </a>
+      </nav>
+    </div>
+
+    <!-- User Profile & Logout -->
+    <div class="p-4 border-t border-slate-200 bg-slate-50">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center border border-emerald-300">
+            UA
+          </div>
+          <div>
+            <div class="font-bold text-xs text-slate-900 leading-tight">Ust. Abdullah</div>
+            <div class="text-[10px] text-slate-500">Guru Tahfiz & Diniyah</div>
+          </div>
+        </div>
+        <a href="login.html" title="Keluar / Ganti Akun" class="text-slate-400 hover:text-red-600 p-1">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEW -->
+  <main class="flex-1 flex flex-col min-w-0">
+    
+    <!-- TOP HEADER -->
+    <header class="h-14 bg-white border-b border-slate-200 px-8 flex items-center justify-between sticky top-0 z-30 shadow-sm">
+      <div class="flex items-center gap-3 text-xs">
+        <span class="text-slate-400 font-medium">Portal SIAKAD</span>
+        <span class="text-slate-300">/</span>
+        <span class="font-bold text-slate-800">Beranda Dashboard</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <!-- Jenjang Active Switcher -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>SMP & SMA Imam Nawawi</span>
+        </div>
+
+        <div class="text-xs text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md font-medium">
+          T.A 2026/2027 Ganjil
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <div class="p-8 max-w-7xl w-full mx-auto space-y-8">
+      
+      <!-- HERO BANNER -->
+      <div class="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-2xl p-6 text-white shadow-lg flex items-center justify-between">
+        <div>
+          <span class="text-[11px] font-extrabold uppercase tracking-wider bg-white/20 px-2.5 py-0.5 rounded-full">Selamat Datang</span>
+          <h1 class="text-2xl font-black mt-2">Selamat Datang di Portal SIAKAD Nawawi</h1>
+          <p class="text-emerald-100 text-xs mt-1 max-w-xl">
+            Sistem penilaian terpadu santri kini menggunakan konfigurator interaktif. Klik tombol di kanan untuk mulai input nilai:
+          </p>
+        </div>
+        <a href="input_nilai_hub.html" class="px-5 py-3 bg-white text-emerald-800 font-extrabold text-xs rounded-xl shadow-md hover:bg-emerald-50 transition-transform hover:-translate-y-0.5 shrink-0 flex items-center gap-2">
+          <span>🚀 Buka Pusat Penilaian</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- KPI METRIC CARDS -->
+      <div class="grid grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs text-slate-500 mb-2 font-medium">
+            <span>Total Santri Aktif</span>
+            <span class="text-emerald-600 text-sm">👥</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">320</div>
+          <div class="text-[11px] text-emerald-600 font-bold mt-1">160 SMP • 160 SMA</div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs text-slate-500 mb-2 font-medium">
+            <span>Rombel & Kelas</span>
+            <span class="text-emerald-600 text-sm">🏫</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">12 Rombel</div>
+          <div class="text-[11px] text-slate-500 mt-1">Kelas 7A s.d 12B</div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs text-slate-500 mb-2 font-medium">
+            <span>Hafalan Juz Tuntas</span>
+            <span class="text-emerald-600 text-sm">📖</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">85.4%</div>
+          <div class="text-[11px] text-emerald-600 font-bold mt-1">273 Santri Ujian Tasmi'</div>
+        </div>
+
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between text-xs text-slate-500 mb-2 font-medium">
+            <span>Status Rapor</span>
+            <span class="text-emerald-600 text-sm">📄</span>
+          </div>
+          <div class="text-2xl font-extrabold text-slate-900">94.2%</div>
+          <div class="text-[11px] text-emerald-600 font-bold mt-1">Siap Cetak & Dibagikan</div>
+        </div>
+      </div>
+
+      <!-- QUICK SHORTCUTS MODULE GRID -->
+      <div>
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base font-extrabold text-slate-900">Modul Utama SIAKAD</h2>
+          <span class="text-xs text-slate-500">Klik modul untuk langsung masuk</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-5">
+          
+          <a href="input_nilai_tahfiz.html" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-md transition-all group block">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-lg mb-3 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              📖
+            </div>
+            <div class="font-bold text-sm text-slate-900 group-hover:text-emerald-700">Ujian Tahfiz & Tasmi'</div>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+              Input nilai hafalan juz Al-Qur'an, kelancaran tajwid, makharijul huruf, dan ujian tasmi' sekali duduk.
+            </p>
+            <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+              <span>Buka Lembar Nilai</span> <span>→</span>
+            </div>
+          </a>
+
+          <a href="input_nilai_diniyah.html" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-md transition-all group block">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-lg mb-3 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              📚
+            </div>
+            <div class="font-bold text-sm text-slate-900 group-hover:text-emerald-700">Akademik Diniyah (Kitab)</div>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+              Format spreadsheet langsung untuk UH 1-5, PTS, dan PAS dengan kalkulasi predikat otomatis.
+            </p>
+            <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+              <span>Buka Nilai Diniyah</span> <span>→</span>
+            </div>
+          </a>
+
+          <a href="input_nilai_keseharian.html" class="bg-white p-5 rounded-xl border border-slate-200 hover:border-emerald-500 shadow-sm hover:shadow-md transition-all group block">
+            <div class="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-lg mb-3 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+              🌟
+            </div>
+            <div class="font-bold text-sm text-slate-900 group-hover:text-emerald-700">Keseharian & Karakter</div>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+              Jurnal kedisiplinan sholat berjamaah, piket asrama, pencatatan pelanggaran, dan pemutihan iqob.
+            </p>
+            <div class="mt-4 text-xs font-bold text-emerald-600 flex items-center gap-1">
+              <span>Buka Jurnal Karakter</span> <span>→</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
